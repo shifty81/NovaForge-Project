@@ -1,0 +1,58 @@
+{
+  "projectId": "novaforge",
+  "displayName": "NovaForge",
+  "projectType": "game",
+  "manifestVersion": 1,
+  "atlasSuiteCompatibility": {
+    "minimumVersion": "0.1.0",
+    "projectContractVersion": 1
+  },
+  "versioning": {
+    "source": "Release/version.json",
+    "semanticVersion": "0.1.0",
+    "channel": "dev"
+  },
+  "targets": {
+    "client": "NovaForge.Client",
+    "server": "NovaForge.Server",
+    "tests": "NovaForge.Tests",
+    "validation": "NovaForge.Validation"
+  },
+  "startup": {
+    "defaultRunProfile": "ClientLocal",
+    "defaultBuildProfile": "Development",
+    "defaultPackageProfile": "ClientDev"
+  },
+  "paths": {
+    "sourceRoot": "Source",
+    "contentRoot": "Content",
+    "configRoot": "Config",
+    "scriptsRoot": "Scripts",
+    "testsRoot": "Tests",
+    "packagingRoot": "Packaging",
+    "releaseRoot": "Release",
+    "docsRoot": "Docs"
+  },
+  "profiles": {
+    "build": [
+      "Debug",
+      "Development",
+      "Release"
+    ],
+    "package": [
+      "ClientDev",
+      "ClientRelease",
+      "ServerRelease"
+    ],
+    "run": [
+      "ClientLocal",
+      "DedicatedServerLocal",
+      "SmokeTest"
+    ]
+  },
+  "validation": {
+    "entryPoint": "Scripts/validate_project.ps1",
+    "contentValidationProfile": "default",
+    "requiresSchemaValidation": true
+  }
+}

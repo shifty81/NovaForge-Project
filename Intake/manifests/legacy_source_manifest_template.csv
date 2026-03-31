@@ -1,0 +1,5 @@
+source_repo,source_path,target_path,decision,notes
+MasterRepoRefactor-main,NovaForge/... ,Source/... ,KEEP_AS_BASE,fill in
+AtlasSuite,NovaForge/... ,Source/... ,MERGE,fill in
+NovaForge-main,...,...,CHERRY_PICK,fill in
+Nova-Forge-Expeditions-main,...,...,ARCHIVE_ONLY,fill in

@@ -1,0 +1,35 @@
+# Build artifacts
+bin/
+obj/
+Artifacts/
+out/
+dist/
+
+# User and IDE
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+
+# Logs and crash output
+*.log
+Logs/
+Crashes/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local migration sources
+_migration_sources/
+Intake/staging/raw_sources/
+
+# Local env
+.env
+.env.*
+
+# Packages
+*.zip
+*.7z
+*.rar
