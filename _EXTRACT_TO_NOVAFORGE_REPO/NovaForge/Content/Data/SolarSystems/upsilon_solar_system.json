@@ -1,0 +1,31 @@
+{
+  "id": "upsilon_solar_system_001",
+  "name": "Upsilon Veilreach System",
+  "version": "1.0",
+  "star": {
+    "id": "upsilon_star_001",
+    "name": "Upsilon Prime",
+    "type": "G9V",
+    "radius": 680000,
+    "luminosity": 0.88,
+    "temperature": 5200
+  },
+  "total_celestials": 8,
+  "celestials": [
+    { "id": "upsilon_planet_001", "name": "Veilreach Inferno", "type": "RockyPlanet", "orbit_radius": 0.4, "radius": 3200, "habitable": false },
+    { "id": "upsilon_planet_002", "name": "Veilreach Ember", "type": "RockyPlanet", "orbit_radius": 0.7, "radius": 5800, "habitable": false },
+    { "id": "upsilon_planet_003", "name": "Veilreach Cradle", "type": "TerrestrialPlanet", "orbit_radius": 1.1, "radius": 6400, "habitable": true, "atmosphere": "nitrogen-oxygen", "population": 1800000000 },
+    { "id": "upsilon_moon_001", "name": "Veilreach Watcher", "type": "Moon", "orbit_radius": 0.003, "radius": 1740, "habitable": false, "parent": "upsilon_planet_003" },
+    { "id": "upsilon_planet_004", "name": "Veilreach Expanse", "type": "GasGiant", "orbit_radius": 3.2, "radius": 65000, "habitable": false },
+    { "id": "upsilon_planet_005", "name": "Veilreach Frost", "type": "IcePlanet", "orbit_radius": 7.1, "radius": 12000, "habitable": false },
+    { "id": "upsilon_station_001", "name": "Veilreach Waypoint", "type": "Station", "orbit_radius": 1.5, "radius": 2, "habitable": false },
+    { "id": "upsilon_anomaly_001", "name": "Veilreach Void Tear", "type": "Anomaly", "orbit_radius": 5.0, "radius": 50, "habitable": false }
+  ],
+  "npc_factions": ["veilreach_assembly", "frontier_wayfarers"],
+  "hazards": ["solar_flare", "void_rift"],
+  "pcg_config": {
+    "seed": 2000,
+    "hazard_level": "extreme",
+    "resource_richness": "moderate"
+  }
+}

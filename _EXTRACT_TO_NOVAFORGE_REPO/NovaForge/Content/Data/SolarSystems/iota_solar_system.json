@@ -1,0 +1,87 @@
+{
+  "id": "iota_solar_system_001",
+  "name": "Iota Solar System Soleth",
+  "version": "1.0",
+  "star": {
+    "type": "B2V",
+    "radius": 3200000,
+    "luminosity": 20000.0
+  },
+  "celestials": [
+    {
+      "id": "soleth_planet_001",
+      "type": "Planet",
+      "name": "Soleth Char",
+      "orbit_radius": 8.0,
+      "radius": 5900,
+      "pcg_seed": 800,
+      "atmosphere": "trace_ionised",
+      "tidally_locked": false
+    },
+    {
+      "id": "soleth_planet_002",
+      "type": "Planet",
+      "name": "Soleth Veil",
+      "orbit_radius": 15.0,
+      "radius": 7200,
+      "pcg_seed": 801,
+      "atmosphere": "sulfuric_acid",
+      "tidally_locked": false
+    },
+    {
+      "id": "soleth_moon_001",
+      "type": "Moon",
+      "name": "Soleth Shard",
+      "orbit_radius": 15.01,
+      "radius": 1100,
+      "parent": "soleth_planet_002",
+      "pcg_seed": 802
+    },
+    {
+      "id": "soleth_gas_giant_001",
+      "type": "GasGiant",
+      "name": "Soleth Titan",
+      "orbit_radius": 30.0,
+      "radius": 75000,
+      "pcg_seed": 803,
+      "atmosphere": "hydrogen_helium"
+    },
+    {
+      "id": "soleth_station_001",
+      "type": "Station",
+      "name": "Soleth Forge",
+      "orbit_radius": 40.0,
+      "faction": "blue_giant_directorate"
+    },
+    {
+      "id": "soleth_stargate_001",
+      "type": "Stargate",
+      "name": "Soleth Gate Omega",
+      "orbit_radius": 50.0,
+      "destination": "theta_solar_system_001"
+    },
+    {
+      "id": "soleth_asteroid_belt_001",
+      "type": "AsteroidBelt",
+      "name": "Soleth Forge Ring",
+      "orbit_radius": 60.0,
+      "ore_types": ["bistot", "arkonor", "mercoxit", "zydrine"]
+    },
+    {
+      "id": "soleth_nebula_001",
+      "type": "Nebula",
+      "name": "Soleth Blaze Cloud",
+      "orbit_radius": 90.0,
+      "hazard_level": "extreme"
+    }
+  ],
+  "total_celestials": 8,
+  "npc_factions": ["blue_giant_directorate", "stellar_prospectors", "void_harvesters"],
+  "pcg_config": {
+    "seed": 800,
+    "density": 0.4,
+    "hazard_level": "extreme",
+    "resource_richness": "very_high",
+    "encounter_rate": "low"
+  }
+}

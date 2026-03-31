@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "loot_tables": [
+    {
+      "table_id": "wreck_fighter_small",
+      "entries": [
+        { "item_id": "scrap_metal",     "min_quantity": 5,  "max_quantity": 20, "drop_chance": 1.0 },
+        { "item_id": "capacitor_cell",  "min_quantity": 1,  "max_quantity": 3,  "drop_chance": 0.7 },
+        { "item_id": "hull_plating",    "min_quantity": 1,  "max_quantity": 2,  "drop_chance": 0.5 },
+        { "item_id": "datacore_basic",  "min_quantity": 1,  "max_quantity": 1,  "drop_chance": 0.2 }
+      ]
+    },
+    {
+      "table_id": "wreck_freighter_medium",
+      "entries": [
+        { "item_id": "scrap_metal",     "min_quantity": 20, "max_quantity": 80, "drop_chance": 1.0 },
+        { "item_id": "refined_alloy",   "min_quantity": 5,  "max_quantity": 15, "drop_chance": 0.8 },
+        { "item_id": "cargo_container", "min_quantity": 1,  "max_quantity": 3,  "drop_chance": 0.6 },
+        { "item_id": "ship_manifest",   "min_quantity": 1,  "max_quantity": 1,  "drop_chance": 0.4 },
+        { "item_id": "datacore_trade",  "min_quantity": 1,  "max_quantity": 1,  "drop_chance": 0.1 }
+      ]
+    },
+    {
+      "table_id": "wreck_station_debris",
+      "entries": [
+        { "item_id": "scrap_metal",       "min_quantity": 50, "max_quantity": 200, "drop_chance": 1.0 },
+        { "item_id": "structural_beam",   "min_quantity": 10, "max_quantity": 40,  "drop_chance": 0.9 },
+        { "item_id": "power_conduit",     "min_quantity": 5,  "max_quantity": 20,  "drop_chance": 0.7 },
+        { "item_id": "datacore_advanced", "min_quantity": 1,  "max_quantity": 2,   "drop_chance": 0.3 },
+        { "item_id": "blueprint_fragment","min_quantity": 1,  "max_quantity": 1,   "drop_chance": 0.15 }
+      ]
+    }
+  ]
+}

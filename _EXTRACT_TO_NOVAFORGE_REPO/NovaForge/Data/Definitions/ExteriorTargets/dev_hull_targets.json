@@ -1,0 +1,8 @@
+{
+  "targets": [
+    { "id": "repair_point_01", "type": "repair_point" },
+    { "id": "salvage_node_01", "type": "salvage_node" },
+    { "id": "tether_anchor_01", "type": "tether_anchor" },
+    { "id": "service_panel_01", "type": "service_panel" }
+  ]
+}

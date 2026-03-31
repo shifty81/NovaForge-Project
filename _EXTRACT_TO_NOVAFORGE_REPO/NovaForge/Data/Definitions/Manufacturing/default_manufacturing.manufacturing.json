@@ -1,0 +1,12 @@
+{
+  "queues": [
+    { "id": "station_queue_alpha", "max_jobs": 4 }
+  ],
+  "jobs": [
+    {
+      "id": "job_reactor_mk1",
+      "recipe_id": "craft_reactor_mk1",
+      "required_time": 10.0
+    }
+  ]
+}

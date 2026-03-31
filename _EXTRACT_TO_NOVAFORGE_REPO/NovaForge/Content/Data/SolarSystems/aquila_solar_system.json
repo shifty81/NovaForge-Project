@@ -1,0 +1,33 @@
+{
+  "id": "aquila_solar_system_001",
+  "name": "Aquila Ascent System",
+  "version": "1.0",
+  "star": {
+    "id": "aquila_star_001",
+    "name": "Aquila Prime",
+    "type": "G8V",
+    "radius": 720000,
+    "luminosity": 0.78,
+    "temperature": 5300
+  },
+  "total_celestials": 10,
+  "celestials": [
+    { "id": "aquila_planet_001", "name": "Ascent Scorch", "type": "RockyPlanet", "orbit_radius": 0.18, "radius": 2600, "habitable": false },
+    { "id": "aquila_planet_002", "name": "Ascent Haze", "type": "VenusTwin", "orbit_radius": 0.72, "radius": 6100, "habitable": false, "atmosphere": "carbon-dioxide" },
+    { "id": "aquila_planet_003", "name": "Ascent Reach", "type": "TerrestrialPlanet", "orbit_radius": 1.02, "radius": 6350, "habitable": true, "atmosphere": "nitrogen-oxygen", "population": 2600000000 },
+    { "id": "aquila_moon_001", "name": "Ascent Wraith", "type": "Moon", "orbit_radius": 0.0028, "radius": 1650, "habitable": false, "parent": "aquila_planet_003" },
+    { "id": "aquila_moon_002", "name": "Ascent Wisp", "type": "Moon", "orbit_radius": 0.0045, "radius": 780, "habitable": false, "parent": "aquila_planet_003" },
+    { "id": "aquila_moon_003", "name": "Ascent Veil", "type": "Moon", "orbit_radius": 0.007, "radius": 420, "habitable": false, "parent": "aquila_planet_003" },
+    { "id": "aquila_planet_004", "name": "Ascent Expanse", "type": "GasGiant", "orbit_radius": 5.4, "radius": 91000, "habitable": false },
+    { "id": "aquila_planet_005", "name": "Ascent Rime", "type": "IceGiant", "orbit_radius": 10.1, "radius": 24000, "habitable": false },
+    { "id": "aquila_station_001", "name": "Ascent Anchorage", "type": "Station", "orbit_radius": 1.35, "radius": 6, "habitable": false },
+    { "id": "aquila_asteroid_belt_001", "name": "Ascent Ring", "type": "AsteroidBelt", "orbit_radius": 2.9, "radius": 0, "habitable": false }
+  ],
+  "npc_factions": ["ascent_collective", "aquila_wayfarers", "rim_salvagers"],
+  "hazards": ["ion_storm_corridor", "dense_asteroid_field"],
+  "pcg_config": {
+    "seed": 4500,
+    "hazard_level": "high",
+    "resource_richness": "medium"
+  }
+}

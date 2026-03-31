@@ -1,0 +1,5 @@
+These records are Master Repo-aligned starter outputs based on the NovaForge donor direction.
+Use them as:
+- live seed content
+- conversion targets
+- validation references during future automated archive ingestion

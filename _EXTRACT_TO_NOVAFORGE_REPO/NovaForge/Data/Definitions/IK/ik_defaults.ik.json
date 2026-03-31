@@ -1,0 +1,9 @@
+{
+  "targets": [
+    { "type": "hand_right", "enabled": true },
+    { "type": "hand_left", "enabled": true },
+    { "type": "foot_right", "enabled": true },
+    { "type": "foot_left", "enabled": true },
+    { "type": "look_target", "enabled": true }
+  ]
+}

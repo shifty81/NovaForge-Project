@@ -1,0 +1,31 @@
+{
+  "id": "orion_solar_system_001",
+  "name": "Orion Starwatch System",
+  "version": "1.0",
+  "star": {
+    "id": "orion_star_001",
+    "name": "Orion Prime",
+    "type": "K2V",
+    "radius": 640000,
+    "luminosity": 0.45,
+    "temperature": 4900
+  },
+  "total_celestials": 8,
+  "celestials": [
+    { "id": "orion_planet_001", "name": "Starwatch Ember", "type": "RockyPlanet", "orbit_radius": 0.28, "radius": 2900, "habitable": false },
+    { "id": "orion_planet_002", "name": "Starwatch Arid", "type": "RockyPlanet", "orbit_radius": 0.62, "radius": 4200, "habitable": false },
+    { "id": "orion_planet_003", "name": "Starwatch Haven", "type": "TerrestrialPlanet", "orbit_radius": 0.95, "radius": 6200, "habitable": true, "atmosphere": "nitrogen-oxygen", "population": 1800000000 },
+    { "id": "orion_moon_001", "name": "Starwatch Drift", "type": "Moon", "orbit_radius": 0.0025, "radius": 1400, "habitable": false, "parent": "orion_planet_003" },
+    { "id": "orion_moon_002", "name": "Starwatch Glimmer", "type": "Moon", "orbit_radius": 0.004, "radius": 900, "habitable": false, "parent": "orion_planet_003" },
+    { "id": "orion_planet_004", "name": "Starwatch Vast", "type": "GasGiant", "orbit_radius": 5.1, "radius": 85000, "habitable": false },
+    { "id": "orion_station_001", "name": "Starwatch Outpost", "type": "Station", "orbit_radius": 1.4, "radius": 5, "habitable": false },
+    { "id": "orion_asteroid_belt_001", "name": "Starwatch Rim", "type": "AsteroidBelt", "orbit_radius": 2.8, "radius": 0, "habitable": false }
+  ],
+  "npc_factions": ["starwatch_covenant", "orion_wanderers"],
+  "hazards": ["asteroid_field", "low_gravity_zone"],
+  "pcg_config": {
+    "seed": 2700,
+    "hazard_level": "low",
+    "resource_richness": "high"
+  }
+}

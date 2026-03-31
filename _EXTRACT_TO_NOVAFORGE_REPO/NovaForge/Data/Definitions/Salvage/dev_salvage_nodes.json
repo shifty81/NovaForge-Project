@@ -1,0 +1,6 @@
+{
+  "nodes": [
+    { "id": "panel_01", "type": "panel", "loot": "basic_parts" },
+    { "id": "component_01", "type": "component", "loot": "advanced_parts" }
+  ]
+}

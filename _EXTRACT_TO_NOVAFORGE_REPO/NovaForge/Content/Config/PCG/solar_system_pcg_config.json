@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "generator": "solar_system_pcg",
+  "planet_density": 0.7,
+  "station_density": 0.4,
+  "asteroid_belt_density": 0.6,
+  "wormhole_probability": 0.2,
+  "anomaly_probability": 0.3,
+  "npc_spawn_rate": 1.0,
+  "asset_types": ["Planet", "Station", "AsteroidBelt", "Wormhole", "Anomaly", "Moon", "Stargate"],
+  "faction_distribution": {
+    "developer_pirates": 0.3,
+    "dev_npcs": 0.7
+  },
+  "lod_levels": [0, 1, 2, 3]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "starter_rig_loadout",
+  "displayName": "Starter Rig Loadout",
+  "equipment": {
+    "helmet": "rig_helmet_mk1",
+    "torso": "rig_torso_mk1",
+    "legs": "rig_legs_mk1",
+    "boots": "rig_boots_mk1",
+    "backpack": "rig_pack_mk1",
+    "primaryTool": "cutter_tool_mk1",
+    "secondaryTool": "scanner_tool_mk1"
+  },
+  "quickSlots": [
+    "cutter_tool_mk1",
+    "sealant_kit_mk1",
+    "scanner_tool_mk1",
+    "oxygen_canister_mk1"
+  ],
+  "starterInventory": [
+    {
+      "itemId": "sealant_patch",
+      "quantity": 2
+    },
+    {
+      "itemId": "med_gel",
+      "quantity": 1
+    },
+    {
+      "itemId": "power_cell_small",
+      "quantity": 1
+    }
+  ]
+}

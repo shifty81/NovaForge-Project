@@ -1,0 +1,6 @@
+{
+  "id": "primary_airlock",
+  "cycle_time_seconds": 2.0,
+  "requires_inner_outer_interlock": true,
+  "supports_eva_exit": true
+}

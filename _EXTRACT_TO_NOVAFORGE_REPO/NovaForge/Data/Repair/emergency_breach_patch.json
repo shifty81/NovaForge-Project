@@ -1,0 +1,13 @@
+{
+  "id": "emergency_breach_patch",
+  "toolRequired": "sealant_gun",
+  "materialsRequired": [
+    "patch_mesh",
+    "sealant_cartridge"
+  ],
+  "timeSec": 4.0,
+  "restores": {
+    "integrity": 15.0,
+    "pressureSeal": true
+  }
+}

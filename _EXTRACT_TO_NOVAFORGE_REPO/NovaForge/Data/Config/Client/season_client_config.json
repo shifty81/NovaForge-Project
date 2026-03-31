@@ -1,0 +1,6 @@
+{
+  "show_season_ui": true,
+  "show_season_warnings": true,
+  "preferred_warning_days": 14,
+  "note": "Client settings control presentation only. Connected servers normally define live season authority."
+}

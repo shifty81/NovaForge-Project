@@ -1,0 +1,10 @@
+{
+  "states": [
+    { "id": "idle", "movement_mode": "fps" },
+    { "id": "walk", "movement_mode": "fps" },
+    { "id": "eva_float", "movement_mode": "eva" },
+    { "id": "eva_boost", "movement_mode": "eva" },
+    { "id": "mech_idle", "movement_mode": "mech" },
+    { "id": "mech_walk", "movement_mode": "mech" }
+  ]
+}

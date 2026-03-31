@@ -1,0 +1,27 @@
+{
+  "id": "mission_salvage_derelict_001",
+  "type": "salvage",
+  "title": "Recover Reactor Components",
+  "giver_faction": "frontier_union",
+  "objectives": [
+    {
+      "id": "obj_01",
+      "type": "retrieve_item",
+      "item_id": "micro_core",
+      "count": 3
+    }
+  ],
+  "rewards": {
+    "credits": 2500,
+    "items": [
+      { "item_id": "steel_plate", "count": 10 }
+    ],
+    "reputation": {
+      "frontier_union": 5
+    }
+  },
+  "generation": {
+    "seed": 99913,
+    "poi_tags": ["derelict", "reactor_room", "hazard_radiation"]
+  }
+}

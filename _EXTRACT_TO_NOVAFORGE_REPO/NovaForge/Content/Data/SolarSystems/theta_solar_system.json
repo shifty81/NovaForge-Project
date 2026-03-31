@@ -1,0 +1,89 @@
+{
+  "id": "theta_solar_system_001",
+  "name": "Theta Solar System Keth",
+  "version": "1.0",
+  "star": {
+    "type": "K3V",
+    "radius": 520000,
+    "luminosity": 0.22
+  },
+  "celestials": [
+    {
+      "id": "keth_rocky_001",
+      "type": "Planet",
+      "name": "Keth Scorch",
+      "orbit_radius": 0.35,
+      "radius": 4200,
+      "pcg_seed": 700,
+      "atmosphere": "trace_sulfur",
+      "tidally_locked": false
+    },
+    {
+      "id": "keth_planet_001",
+      "type": "Planet",
+      "name": "Keth Haven",
+      "orbit_radius": 0.72,
+      "radius": 6300,
+      "pcg_seed": 701,
+      "atmosphere": "nitrogen_oxygen",
+      "habitable": true
+    },
+    {
+      "id": "keth_moon_001",
+      "type": "Moon",
+      "name": "Keth Pale",
+      "orbit_radius": 0.721,
+      "radius": 1200,
+      "parent": "keth_planet_001",
+      "pcg_seed": 702
+    },
+    {
+      "id": "keth_moon_002",
+      "type": "Moon",
+      "name": "Keth Shade",
+      "orbit_radius": 0.723,
+      "radius": 800,
+      "parent": "keth_planet_001",
+      "pcg_seed": 703
+    },
+    {
+      "id": "keth_station_001",
+      "type": "Station",
+      "name": "Keth Nexus",
+      "orbit_radius": 1.0,
+      "faction": "orange_dwarf_council"
+    },
+    {
+      "id": "keth_stargate_001",
+      "type": "Stargate",
+      "name": "Keth Gate Prime",
+      "orbit_radius": 1.4,
+      "destination": "zeta_solar_system_001"
+    },
+    {
+      "id": "keth_asteroid_belt_001",
+      "type": "AsteroidBelt",
+      "name": "Keth Drift Ring",
+      "orbit_radius": 2.0,
+      "ore_types": ["veldspar", "scordite", "pyroxeres"]
+    },
+    {
+      "id": "keth_gas_giant_001",
+      "type": "GasGiant",
+      "name": "Keth Colossus",
+      "orbit_radius": 3.5,
+      "radius": 68000,
+      "pcg_seed": 704,
+      "atmosphere": "hydrogen_helium"
+    }
+  ],
+  "total_celestials": 8,
+  "npc_factions": ["orange_dwarf_council", "keth_miners_guild", "frontier_patrol"],
+  "pcg_config": {
+    "seed": 700,
+    "density": 0.65,
+    "hazard_level": "medium",
+    "resource_richness": "high",
+    "encounter_rate": "medium"
+  }
+}

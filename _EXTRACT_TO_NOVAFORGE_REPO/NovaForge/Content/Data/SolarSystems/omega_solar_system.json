@@ -1,0 +1,31 @@
+{
+  "id": "omega_solar_system_001",
+  "name": "Omega Ashenveil System",
+  "version": "1.0",
+  "star": {
+    "id": "omega_star_001",
+    "name": "Omega Prime",
+    "type": "F1V",
+    "radius": 830000,
+    "luminosity": 4.2,
+    "temperature": 7100
+  },
+  "total_celestials": 8,
+  "celestials": [
+    { "id": "omega_planet_001", "name": "Ashenveil Cinder", "type": "RockyPlanet", "orbit_radius": 0.28, "radius": 2800, "habitable": false },
+    { "id": "omega_planet_002", "name": "Ashenveil Drift", "type": "RockyPlanet", "orbit_radius": 0.65, "radius": 3900, "habitable": false },
+    { "id": "omega_planet_003", "name": "Ashenveil Haven", "type": "TerrestrialPlanet", "orbit_radius": 1.12, "radius": 6700, "habitable": true, "atmosphere": "nitrogen-oxygen", "population": 3100000000 },
+    { "id": "omega_moon_001", "name": "Ashenveil Watch", "type": "Moon", "orbit_radius": 0.0028, "radius": 1600, "habitable": false, "parent": "omega_planet_003" },
+    { "id": "omega_planet_004", "name": "Ashenveil Colossus", "type": "GasGiant", "orbit_radius": 4.1, "radius": 82000, "habitable": false },
+    { "id": "omega_planet_005", "name": "Ashenveil Frost", "type": "IcePlanet", "orbit_radius": 9.5, "radius": 12400, "habitable": false },
+    { "id": "omega_station_001", "name": "Ashenveil Anchor", "type": "Station", "orbit_radius": 1.6, "radius": 6, "habitable": false },
+    { "id": "omega_anomaly_001", "name": "Ashenveil Rift", "type": "Anomaly", "orbit_radius": 6.8, "radius": 45, "habitable": false }
+  ],
+  "npc_factions": ["ashenveil_covenant", "rift_harbingers"],
+  "hazards": ["stellar_wind", "debris_field"],
+  "pcg_config": {
+    "seed": 2400,
+    "hazard_level": "high",
+    "resource_richness": "medium"
+  }
+}

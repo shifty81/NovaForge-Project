@@ -1,0 +1,31 @@
+{
+  "id": "psi_solar_system_001",
+  "name": "Psi Embervast System",
+  "version": "1.0",
+  "star": {
+    "id": "psi_star_001",
+    "name": "Psi Prime",
+    "type": "G6V",
+    "radius": 720000,
+    "luminosity": 0.85,
+    "temperature": 5400
+  },
+  "total_celestials": 8,
+  "celestials": [
+    { "id": "psi_planet_001", "name": "Embervast Cinder", "type": "RockyPlanet", "orbit_radius": 0.32, "radius": 3000, "habitable": false },
+    { "id": "psi_planet_002", "name": "Embervast Dust", "type": "RockyPlanet", "orbit_radius": 0.72, "radius": 4200, "habitable": false },
+    { "id": "psi_planet_003", "name": "Embervast Cradle", "type": "TerrestrialPlanet", "orbit_radius": 1.05, "radius": 6400, "habitable": true, "atmosphere": "nitrogen-oxygen", "population": 2800000000 },
+    { "id": "psi_moon_001", "name": "Embervast Sentinel", "type": "Moon", "orbit_radius": 0.003, "radius": 1750, "habitable": false, "parent": "psi_planet_003" },
+    { "id": "psi_planet_004", "name": "Embervast Titan", "type": "GasGiant", "orbit_radius": 3.5, "radius": 75000, "habitable": false },
+    { "id": "psi_planet_005", "name": "Embervast Tundra", "type": "IcePlanet", "orbit_radius": 8.2, "radius": 11200, "habitable": false },
+    { "id": "psi_station_001", "name": "Embervast Nexus", "type": "Station", "orbit_radius": 1.4, "radius": 5, "habitable": false },
+    { "id": "psi_anomaly_001", "name": "Embervast Void", "type": "Anomaly", "orbit_radius": 6.0, "radius": 30, "habitable": false }
+  ],
+  "npc_factions": ["embervast_dominion", "void_wanderers"],
+  "hazards": ["solar_flare", "asteroid_belt"],
+  "pcg_config": {
+    "seed": 2300,
+    "hazard_level": "medium",
+    "resource_richness": "high"
+  }
+}

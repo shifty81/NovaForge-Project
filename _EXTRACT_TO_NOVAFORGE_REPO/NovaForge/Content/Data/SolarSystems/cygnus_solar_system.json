@@ -1,0 +1,31 @@
+{
+  "id": "cygnus_solar_system_001",
+  "name": "Cygnus Emberstrike System",
+  "version": "1.0",
+  "star": {
+    "id": "cygnus_star_001",
+    "name": "Cygnus Prime",
+    "type": "G3V",
+    "radius": 710000,
+    "luminosity": 1.05,
+    "temperature": 5700
+  },
+  "total_celestials": 8,
+  "celestials": [
+    { "id": "cygnus_planet_001", "name": "Emberstrike Forge", "type": "RockyPlanet", "orbit_radius": 0.35, "radius": 3100, "habitable": false },
+    { "id": "cygnus_planet_002", "name": "Emberstrike Dusk", "type": "RockyPlanet", "orbit_radius": 0.78, "radius": 4500, "habitable": false },
+    { "id": "cygnus_planet_003", "name": "Emberstrike Verdant", "type": "TerrestrialPlanet", "orbit_radius": 1.08, "radius": 6500, "habitable": true, "atmosphere": "nitrogen-oxygen", "population": 2400000000 },
+    { "id": "cygnus_moon_001", "name": "Emberstrike Pale", "type": "Moon", "orbit_radius": 0.0027, "radius": 1700, "habitable": false, "parent": "cygnus_planet_003" },
+    { "id": "cygnus_planet_004", "name": "Emberstrike Sovereign", "type": "GasGiant", "orbit_radius": 4.2, "radius": 78000, "habitable": false },
+    { "id": "cygnus_planet_005", "name": "Emberstrike Rime", "type": "IcePlanet", "orbit_radius": 8.8, "radius": 11600, "habitable": false },
+    { "id": "cygnus_station_001", "name": "Emberstrike Relay", "type": "Station", "orbit_radius": 1.5, "radius": 4, "habitable": false },
+    { "id": "cygnus_anomaly_001", "name": "Emberstrike Shard", "type": "Anomaly", "orbit_radius": 6.5, "radius": 35, "habitable": false }
+  ],
+  "npc_factions": ["emberstrike_accord", "cygnus_wanderers"],
+  "hazards": ["solar_flare", "magnetic_storm"],
+  "pcg_config": {
+    "seed": 2500,
+    "hazard_level": "medium",
+    "resource_richness": "high"
+  }
+}

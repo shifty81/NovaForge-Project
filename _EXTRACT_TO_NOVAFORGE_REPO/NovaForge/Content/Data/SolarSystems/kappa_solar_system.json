@@ -1,0 +1,86 @@
+{
+  "id": "kappa_solar_system_001",
+  "name": "Kappa Solar System Venth",
+  "version": "1.0",
+  "star": {
+    "type": "O5V",
+    "radius": 8500000,
+    "luminosity": 800000.0
+  },
+  "celestials": [
+    {
+      "id": "venth_planet_001",
+      "type": "Planet",
+      "name": "Venth Cinder",
+      "orbit_radius": 5.0,
+      "radius": 4200,
+      "pcg_seed": 900,
+      "atmosphere": "none",
+      "tidally_locked": true
+    },
+    {
+      "id": "venth_planet_002",
+      "type": "Planet",
+      "name": "Venth Ember",
+      "orbit_radius": 12.0,
+      "radius": 6800,
+      "pcg_seed": 901,
+      "atmosphere": "trace_ionised"
+    },
+    {
+      "id": "venth_gas_giant_001",
+      "type": "GasGiant",
+      "name": "Venth Colossus",
+      "orbit_radius": 25.0,
+      "radius": 90000,
+      "pcg_seed": 902,
+      "atmosphere": "hydrogen_helium"
+    },
+    {
+      "id": "venth_moon_001",
+      "type": "Moon",
+      "name": "Venth Shadow",
+      "orbit_radius": 25.01,
+      "radius": 2500,
+      "parent": "venth_gas_giant_001",
+      "pcg_seed": 903
+    },
+    {
+      "id": "venth_station_001",
+      "type": "Station",
+      "name": "Venth Crucible",
+      "orbit_radius": 35.0,
+      "faction": "radiation_harvesters"
+    },
+    {
+      "id": "venth_stargate_001",
+      "type": "Stargate",
+      "name": "Venth Gate Prime",
+      "orbit_radius": 45.0,
+      "destination": "iota_solar_system_001"
+    },
+    {
+      "id": "venth_asteroid_belt_001",
+      "type": "AsteroidBelt",
+      "name": "Venth Forge Ring",
+      "orbit_radius": 55.0,
+      "ore_types": ["arkonor", "bistot", "crokite", "spodumain"]
+    },
+    {
+      "id": "venth_pulsar_field_001",
+      "type": "Nebula",
+      "name": "Venth Radiation Cloud",
+      "orbit_radius": 80.0,
+      "hazard_level": "lethal"
+    }
+  ],
+  "total_celestials": 8,
+  "npc_factions": ["radiation_harvesters", "void_crusade", "stellar_foundry"],
+  "pcg_config": {
+    "seed": 900,
+    "density": 0.3,
+    "hazard_level": "lethal",
+    "resource_richness": "extreme",
+    "encounter_rate": "very_low"
+  }
+}

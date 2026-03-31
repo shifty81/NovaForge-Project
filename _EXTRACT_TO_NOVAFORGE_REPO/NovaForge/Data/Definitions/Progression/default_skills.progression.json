@@ -1,0 +1,12 @@
+{
+  "skills": [
+    { "id": "salvaging", "starting_level": 1, "starting_multiplier": 1.0 },
+    { "id": "mining", "starting_level": 1, "starting_multiplier": 1.0 },
+    { "id": "engineering", "starting_level": 1, "starting_multiplier": 1.0 },
+    { "id": "eva_operations", "starting_level": 1, "starting_multiplier": 1.0 }
+  ],
+  "training_rules": {
+    "activity_bonus_enabled": true,
+    "max_multiplier": 3.0
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "reactor_mk1_item",
+  "name": "Reactor MK1 Item",
+  "category": "module_item",
+  "stack_size": 5,
+  "mass": 25,
+  "volume": 8,
+  "tags": ["crafting", "module"],
+  "value": 450
+}

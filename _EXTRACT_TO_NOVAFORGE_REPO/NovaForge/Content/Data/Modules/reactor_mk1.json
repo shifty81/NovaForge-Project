@@ -1,0 +1,10 @@
+{
+  "id": "reactor_mk1",
+  "name": "Reactor MK1",
+  "category": "reactor",
+  "size": {
+    "x": 2,
+    "y": 2,
+    "z": 2
+  }
+}

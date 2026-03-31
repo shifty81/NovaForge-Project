@@ -1,0 +1,6 @@
+{
+  "id": "container_utility_01",
+  "name": "Utility Container",
+  "category": "container",
+  "interaction": { "interactable": true }
+}

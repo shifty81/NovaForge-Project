@@ -1,0 +1,8 @@
+{
+  "seasons_enabled": true,
+  "server_authoritative_seasons": true,
+  "season_length_days": 180,
+  "season_end_warning_window_days": 14,
+  "carryover_rewards_enabled": true,
+  "note": "Server is the normal authority for seasonal timing and reset policy."
+}

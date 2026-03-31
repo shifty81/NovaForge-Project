@@ -1,0 +1,18 @@
+{
+  "routes": [
+    {
+      "route_id": "route_frontier_iron",
+      "source_faction_id": "deep_core_extractors",
+      "destination_faction_id": "frontier_union",
+      "item_id": "iron_ore",
+      "volume": 100
+    },
+    {
+      "route_id": "route_salvage_components",
+      "source_faction_id": "free_salvage_collective",
+      "destination_faction_id": "frontier_union",
+      "item_id": "micro_core",
+      "volume": 25
+    }
+  ]
+}

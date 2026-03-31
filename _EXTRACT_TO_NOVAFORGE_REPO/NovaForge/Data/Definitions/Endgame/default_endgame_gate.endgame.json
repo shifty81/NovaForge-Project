@@ -1,0 +1,6 @@
+{
+  "gate_id": "forge_gate_01",
+  "titan_required": true,
+  "sector_id": "sector_outer",
+  "season_transition_enabled": true
+}

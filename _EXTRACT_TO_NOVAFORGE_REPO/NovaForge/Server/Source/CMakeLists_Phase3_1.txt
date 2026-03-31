@@ -1,0 +1,32 @@
+cmake_minimum_required(VERSION 3.16)
+project(MasterRepoPhase3_1Integration LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+add_executable(MasterRepoPhase3_1Integration
+    Source/main.cpp
+    Source/Core/App.cpp
+    Source/Core/EngineKernel.cpp
+    Source/World/World.cpp
+    Source/World/SystemScheduler.cpp
+    Source/Entity/EntityRegistry.cpp
+    Source/Entity/ComponentRegistry.cpp
+    Source/Voxel/StructureRegistry.cpp
+    Source/Voxel/VoxelSubsystem.cpp
+    Source/Modules/ModuleRegistry.cpp
+    Source/Modules/ModuleSubsystem.cpp
+    Source/Rendering/Renderer.cpp
+    Source/Tooling/ToolingSubsystem.cpp
+    Source/Data/DataRegistry.cpp
+    Source/Gameplay/PlayerController.cpp
+    Source/Gameplay/InventorySystem.cpp
+    Source/Gameplay/CraftingSystem.cpp
+    Source/Gameplay/InteractionSystem.cpp
+    Source/Gameplay/MissionSystem.cpp
+    Source/Gameplay/GameplayManager.cpp
+    Source/UI/RuntimeUIHooks.cpp
+)
+
+target_include_directories(MasterRepoPhase3_1Integration PRIVATE Source)

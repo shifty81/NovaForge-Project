@@ -1,0 +1,5 @@
+{
+  "anomalies": [
+    { "id": "storm_01", "effect": "radiation", "intensity": 5 }
+  ]
+}

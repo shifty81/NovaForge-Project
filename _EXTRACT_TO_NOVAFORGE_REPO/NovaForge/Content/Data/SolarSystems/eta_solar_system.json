@@ -1,0 +1,87 @@
+{
+  "id": "eta_solar_system_001",
+  "name": "Eta Solar System Vryn",
+  "version": "1.0",
+  "star": {
+    "type": "M5V",
+    "radius": 206000,
+    "luminosity": 0.004
+  },
+  "celestials": [
+    {
+      "id": "vryn_rocky_001",
+      "type": "Planet",
+      "name": "Vryn Cinder",
+      "orbit_radius": 0.05,
+      "radius": 3200,
+      "pcg_seed": 600,
+      "atmosphere": "none",
+      "tidally_locked": true
+    },
+    {
+      "id": "vryn_planet_001",
+      "type": "Planet",
+      "name": "Vryn Ember",
+      "orbit_radius": 0.1,
+      "radius": 5800,
+      "pcg_seed": 601,
+      "atmosphere": "carbon_dioxide",
+      "tidally_locked": true
+    },
+    {
+      "id": "vryn_moon_001",
+      "type": "Moon",
+      "name": "Vryn Shard",
+      "orbit_radius": 0.101,
+      "radius": 900,
+      "parent": "vryn_planet_001",
+      "pcg_seed": 602
+    },
+    {
+      "id": "vryn_station_001",
+      "type": "Station",
+      "name": "Vryn Outpost Alpha",
+      "orbit_radius": 0.15,
+      "faction": "red_dwarf_syndicate"
+    },
+    {
+      "id": "vryn_stargate_001",
+      "type": "Stargate",
+      "name": "Vryn Gate Prime",
+      "orbit_radius": 0.2,
+      "destination": "epsilon_solar_system_001"
+    },
+    {
+      "id": "vryn_asteroid_belt_001",
+      "type": "AsteroidBelt",
+      "name": "Vryn Dust Veil",
+      "orbit_radius": 0.4,
+      "ore_types": ["arkonor", "bistot", "crokite"]
+    },
+    {
+      "id": "vryn_ice_world_001",
+      "type": "Planet",
+      "name": "Vryn Frost",
+      "orbit_radius": 0.6,
+      "radius": 4100,
+      "pcg_seed": 603,
+      "atmosphere": "thin_nitrogen"
+    },
+    {
+      "id": "vryn_debris_field_001",
+      "type": "DebrisField",
+      "name": "Vryn Graveyard",
+      "orbit_radius": 0.8,
+      "hazard_level": "high"
+    }
+  ],
+  "total_celestials": 8,
+  "npc_factions": ["red_dwarf_syndicate", "void_scavengers", "frontier_patrol"],
+  "pcg_config": {
+    "seed": 600,
+    "density": 0.5,
+    "hazard_level": "high",
+    "resource_richness": "medium",
+    "encounter_rate": "high"
+  }
+}

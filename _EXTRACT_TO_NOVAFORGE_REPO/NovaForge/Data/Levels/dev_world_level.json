@@ -1,0 +1,130 @@
+{
+  "levelName": "Dev World",
+  "entities": [
+    {
+      "id": "entity-spawn-dev-room",
+      "name": "Dev Room Spawn Point",
+      "type": "SpawnPoint",
+      "properties": {
+        "x": "0",
+        "y": "0",
+        "z": "0",
+        "label": "spawn_dev_room"
+      },
+      "components": {
+        "Transform": "pos(0,0,0) rot(0,0,0) scale(1,1,1)",
+        "SpawnTag": "spawn_dev_room"
+      }
+    },
+    {
+      "id": "entity-starter-ship",
+      "name": "Starter Ship",
+      "type": "Construct",
+      "properties": {
+        "constructId": "starter_ship_dev",
+        "spawnZone": "ship_hangar",
+        "health": "100",
+        "maxHealth": "100"
+      },
+      "components": {
+        "Transform": "pos(120,0,45) rot(0,0,0) scale(1,1,1)",
+        "Health": "100/100",
+        "ConstructTag": "starter_ship_dev",
+        "Physics": "mass=1200 friction=0.3"
+      }
+    },
+    {
+      "id": "entity-starter-mech",
+      "name": "Utility Mech",
+      "type": "Construct",
+      "properties": {
+        "constructId": "mech_utility_dev",
+        "spawnZone": "mech_bay",
+        "health": "80",
+        "maxHealth": "80"
+      },
+      "components": {
+        "Transform": "pos(-30,0,10) rot(0,90,0) scale(1,1,1)",
+        "Health": "80/80",
+        "ConstructTag": "mech_utility_dev",
+        "Rig": "rig_default_loadout"
+      }
+    },
+    {
+      "id": "entity-combat-dummy-01",
+      "name": "Combat Dummy Alpha",
+      "type": "CombatDummy",
+      "properties": {
+        "health": "50",
+        "maxHealth": "50",
+        "resistanceProfile": "none"
+      },
+      "components": {
+        "Transform": "pos(40,0,-20) rot(0,180,0) scale(1,1,1)",
+        "Health": "50/50",
+        "CombatTarget": "true",
+        "AIState": "idle"
+      }
+    },
+    {
+      "id": "entity-salvage-wreck-01",
+      "name": "Salvage Wreck Mk1",
+      "type": "SalvageWreck",
+      "properties": {
+        "tier": "1",
+        "lootTable": "salvage_tier1_dev",
+        "extracted": "false"
+      },
+      "components": {
+        "Transform": "pos(-80,0,60) rot(0,45,0) scale(1,1,1)",
+        "Interactable": "true",
+        "LootContainer": "salvage_tier1_dev"
+      }
+    },
+    {
+      "id": "entity-builder-pad-01",
+      "name": "Builder Pad A",
+      "type": "BuilderPad",
+      "properties": {
+        "padId": "builder_pad_a",
+        "active": "true",
+        "gridSize": "10"
+      },
+      "components": {
+        "Transform": "pos(0,0,80) rot(0,0,0) scale(10,1,10)",
+        "BuildZone": "builder_pad_a",
+        "Grid": "10x10"
+      }
+    },
+    {
+      "id": "entity-airlock-01",
+      "name": "Airlock Alpha",
+      "type": "Airlock",
+      "properties": {
+        "zoneId": "airlock_room",
+        "pressurised": "true",
+        "locked": "false"
+      },
+      "components": {
+        "Transform": "pos(200,0,0) rot(0,0,0) scale(1,1,1)",
+        "PressureZone": "pressurised",
+        "Door": "open"
+      }
+    },
+    {
+      "id": "entity-hazard-fire-01",
+      "name": "Fire Hazard Zone",
+      "type": "HazardZone",
+      "properties": {
+        "hazardType": "fire",
+        "intensity": "0.3",
+        "radius": "5"
+      },
+      "components": {
+        "Transform": "pos(60,0,-60) rot(0,0,0) scale(5,2,5)",
+        "HazardTag": "fire",
+        "DamageAura": "dps=5 radius=5"
+      }
+    }
+  ]
+}

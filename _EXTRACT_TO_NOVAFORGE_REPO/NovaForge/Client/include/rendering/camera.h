@@ -1,0 +1,207 @@
+#pragma once
+
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
+namespace atlas {
+
+// ── Coordinate-system constants ──────────────────────────────────────
+//
+// NovaForge uses a **right-handed** OpenGL coordinate system:
+//
+//   +X  = Right
+//   +Y  = Up       (world vertical)
+//   -Z  = Forward  (standard OpenGL camera look direction)
+//
+// The FPS/cockpit camera convention:
+//   Forward = (cos(pitch)*sin(yaw),  sin(pitch),  -cos(pitch)*cos(yaw))
+//   At yaw=0 the camera looks toward -Z.
+//
+// Deriving basis vectors from an arbitrary forward direction:
+//   Right = cross(Forward, WORLD_UP)      (screen-right direction)
+//   Up    = cross(Right,   Forward)       (screen-up direction)
+//
+// These match glm::lookAt's internal s = cross(f, up).
+// ─────────────────────────────────────────────────────────────────────
+
+inline constexpr glm::vec3 WORLD_UP      {0.0f, 1.0f,  0.0f};
+inline constexpr glm::vec3 WORLD_FORWARD {0.0f, 0.0f, -1.0f};  // -Z (OpenGL camera default)
+inline constexpr glm::vec3 WORLD_RIGHT   {1.0f, 0.0f,  0.0f};
+
+/**
+ * View mode for the camera system.
+ *
+ * ORBIT  – Default Astralis-style third-person orbit (RTS-style) around the ship.
+ * FPS    – First-person view for walking inside ship interiors / stations.
+ * COCKPIT – First-person cockpit view with flight controls visible.
+ */
+enum class ViewMode {
+    ORBIT,
+    FPS,
+    COCKPIT
+};
+
+/**
+ * Camera class for 3D view
+ * Implements Astralis-style orbit camera with smooth zoom and orbit inertia,
+ * plus FPS and cockpit first-person modes for interior navigation.
+ */
+class Camera {
+public:
+    Camera(float fov = 45.0f, float aspectRatio = 16.0f / 9.0f, float nearPlane = 0.1f, float farPlane = 10000.0f);
+
+    /**
+     * Update camera (call each frame).
+     * Applies inertia / smooth interpolation to zoom and rotation.
+     */
+    void update(float deltaTime);
+
+    /**
+     * Get view matrix
+     */
+    glm::mat4 getViewMatrix() const;
+
+    /**
+     * Get projection matrix
+     */
+    glm::mat4 getProjectionMatrix() const;
+
+    /**
+     * Set camera target (what to look at)
+     */
+    void setTarget(const glm::vec3& target);
+
+    /**
+     * Get camera position
+     */
+    glm::vec3 getPosition() const;
+
+    /**
+     * Get the orbit camera's forward direction (from camera toward target).
+     * Useful for deriving ship movement direction in InSpace mode.
+     */
+    glm::vec3 getForward() const { return m_forward; }
+
+    /**
+     * Get the orbit camera's right direction (perpendicular to forward on XZ plane).
+     */
+    glm::vec3 getRight() const { return m_right; }
+
+    /**
+     * Camera controls
+     */
+    void zoom(float delta);
+    void rotate(float deltaYaw, float deltaPitch);
+    void pan(float deltaX, float deltaY);
+
+    /**
+     * Set aspect ratio (e.g., on window resize)
+     */
+    void setAspectRatio(float aspectRatio);
+
+    /**
+     * Get camera distance from target
+     */
+    float getDistance() const { return m_distance; }
+
+    /**
+     * Set camera distance from target
+     */
+    void setDistance(float distance);
+
+    /**
+     * Astralis-style tracking camera: snap yaw/pitch to look at a world
+     * position from the current distance.
+     */
+    void lookAt(const glm::vec3& worldPos);
+
+    /**
+     * Get yaw/pitch (useful for UI indicators)
+     */
+    float getYaw()   const { return m_yaw; }
+    float getPitch() const { return m_pitch; }
+
+    // ── View-mode API ──────────────────────────────────────────────
+
+    /**
+     * Get the current view mode.
+     */
+    ViewMode getViewMode() const { return m_viewMode; }
+
+    /**
+     * Set the view mode.
+     * Resets inertia and snaps camera parameters to sensible defaults
+     * for the new mode.
+     */
+    void setViewMode(ViewMode mode);
+
+    /**
+     * Set FPS / cockpit eye position and look direction.
+     * Only used when view mode is FPS or COCKPIT.
+     */
+    void setFPSPosition(const glm::vec3& eyePos, const glm::vec3& lookDir);
+
+    /**
+     * FPS mouse-look: rotate the first-person look direction.
+     * Only effective in FPS or COCKPIT mode.
+     */
+    void rotateFPS(float deltaYaw, float deltaPitch);
+
+    /**
+     * Get FPS forward direction (useful for movement).
+     */
+    glm::vec3 getFPSForward() const { return m_fpsForward; }
+
+    /** Get the current FPS yaw angle in degrees (used to sync Application movement). */
+    float getFPSYaw()   const { return m_fpsYaw; }
+    /** Get the current FPS pitch angle in degrees. */
+    float getFPSPitch() const { return m_fpsPitch; }
+
+private:
+    void updateVectors();
+
+    // Camera parameters
+    glm::vec3 m_target;
+    float m_distance;
+    float m_yaw;
+    float m_pitch;
+
+    // Projection parameters
+    float m_fov;
+    float m_aspectRatio;
+    float m_nearPlane;
+    float m_farPlane;
+
+    // Camera vectors
+    glm::vec3 m_position;
+    glm::vec3 m_forward;
+    glm::vec3 m_right;
+    glm::vec3 m_up;
+
+    // Astralis-style smooth interpolation targets
+    float m_targetDistance;     // desired zoom distance
+    float m_yawVelocity  = 0.0f;  // angular velocity for inertia
+    float m_pitchVelocity = 0.0f;
+
+    // Current view mode
+    ViewMode m_viewMode = ViewMode::ORBIT;
+
+    // FPS / Cockpit state
+    glm::vec3 m_fpsPosition{0.0f};
+    glm::vec3 m_fpsForward{0.0f, 0.0f, -1.0f};
+    float m_fpsYaw   = 0.0f;
+    float m_fpsPitch = 0.0f;
+
+    // Limits
+    static constexpr float MIN_DISTANCE = 10.0f;
+    static constexpr float MAX_DISTANCE = 5000.0f;
+    static constexpr float MIN_PITCH = -89.0f;
+    static constexpr float MAX_PITCH = 89.0f;
+
+    // Smoothing parameters
+    static constexpr float ZOOM_LERP_SPEED   = 8.0f;  // higher = snappier zoom
+    static constexpr float INERTIA_DAMPING    = 5.0f;  // angular velocity decay rate
+    static constexpr float INERTIA_THRESHOLD  = 0.05f; // stop when below this
+};
+
+} // namespace atlas

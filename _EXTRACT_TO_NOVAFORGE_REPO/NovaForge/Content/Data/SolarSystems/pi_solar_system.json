@@ -1,0 +1,95 @@
+{
+  "id": "pi_solar_system_001",
+  "name": "Pi Redfall System",
+  "version": "1.0",
+  "star": {
+    "type": "M2V",
+    "radius": 380000,
+    "luminosity": 0.04,
+    "temperature": 3200
+  },
+  "total_celestials": 8,
+  "celestials": [
+    {
+      "id": "redfall_planet_001",
+      "name": "Redfall Scorch",
+      "type": "Planet",
+      "orbit_radius": 0.05,
+      "radius": 1800,
+      "atmosphere": "trace_sulfur",
+      "habitable": false,
+      "pcg_seed": 1600
+    },
+    {
+      "id": "redfall_planet_002",
+      "name": "Redfall Ember",
+      "type": "Planet",
+      "orbit_radius": 0.12,
+      "radius": 5200,
+      "atmosphere": "thin_co2",
+      "habitable": false,
+      "pcg_seed": 1601
+    },
+    {
+      "id": "redfall_planet_003",
+      "name": "Redfall Hearth",
+      "type": "Planet",
+      "orbit_radius": 0.2,
+      "radius": 6200,
+      "atmosphere": "nitrogen_oxygen",
+      "habitable": true,
+      "pcg_seed": 1602
+    },
+    {
+      "id": "redfall_moon_001",
+      "name": "Redfall Gleam",
+      "type": "Moon",
+      "orbit_radius": 0.205,
+      "radius": 1600,
+      "parent": "redfall_planet_003",
+      "pcg_seed": 1603
+    },
+    {
+      "id": "redfall_planet_004",
+      "name": "Redfall Cinder",
+      "type": "Planet",
+      "orbit_radius": 0.5,
+      "radius": 3400,
+      "atmosphere": "thick_co2",
+      "habitable": false,
+      "pcg_seed": 1604
+    },
+    {
+      "id": "redfall_gas_giant_001",
+      "name": "Redfall Colossus",
+      "type": "GasGiant",
+      "orbit_radius": 2.0,
+      "radius": 57000,
+      "atmosphere": "hydrogen_helium",
+      "pcg_seed": 1605
+    },
+    {
+      "id": "redfall_station_001",
+      "name": "Redfall Harbor",
+      "type": "Station",
+      "orbit_radius": 0.35,
+      "faction": "redfall_syndicate"
+    },
+    {
+      "id": "redfall_anomaly_001",
+      "name": "Redfall Voidgate",
+      "type": "Anomaly",
+      "orbit_radius": 8.0,
+      "hazard_level": "severe"
+    }
+  ],
+  "npc_factions": ["redfall_syndicate", "pi_explorers", "hearth_colony"],
+  "pcg_config": {
+    "seed": 1600,
+    "density": 0.55,
+    "hazard_level": "medium",
+    "resource_richness": "moderate",
+    "encounter_rate": "high"
+  },
+  "hazards": ["tidal_lock_zone", "flare_activity"]
+}

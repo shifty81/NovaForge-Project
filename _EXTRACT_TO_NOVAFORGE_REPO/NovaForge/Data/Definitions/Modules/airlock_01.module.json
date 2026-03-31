@@ -1,0 +1,6 @@
+{
+  "id": "airlock_01",
+  "name": "Primary Airlock",
+  "category": "airlock",
+  "interaction": { "interactable": true }
+}

@@ -1,0 +1,5 @@
+{
+  "conflicts": [
+    { "faction_a": "frontier_union", "faction_b": "deep_core_extractors", "intensity": 2 }
+  ]
+}

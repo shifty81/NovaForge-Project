@@ -1,0 +1,8 @@
+{
+  "spawn_location": "ship_dev_001",
+  "starting_sector": "sector_home",
+  "starting_station": "frontier_station_alpha",
+  "starting_contract": "contract_salvage_panels_01",
+  "starting_ship": "ship_player_001",
+  "debug_overlay_enabled": true
+}

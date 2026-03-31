@@ -1,0 +1,14 @@
+{
+  "context": "player_on_foot",
+  "actions": [
+    { "name": "move_forward", "key": "W" },
+    { "name": "move_backward", "key": "S" },
+    { "name": "move_left", "key": "A" },
+    { "name": "move_right", "key": "D" },
+    { "name": "inventory", "key": "Tab" },
+    { "name": "crafting", "key": "C" },
+    { "name": "mission_log", "key": "J" },
+    { "name": "interact", "key": "E" },
+    { "name": "tool_overlay", "key": "F12" }
+  ]
+}

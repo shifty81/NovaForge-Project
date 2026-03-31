@@ -1,0 +1,9 @@
+{
+  "terminal_id": "frontier_terminal_main",
+  "options": [
+    { "id": "repair_ship", "label": "Repair Ship", "enabled": true },
+    { "id": "open_trade", "label": "Open Trade", "enabled": true },
+    { "id": "open_storage", "label": "Open Storage", "enabled": true },
+    { "id": "open_manufacturing", "label": "Open Manufacturing", "enabled": true }
+  ]
+}

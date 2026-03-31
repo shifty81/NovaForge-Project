@@ -1,0 +1,38 @@
+{
+  "id": "dev_world",
+  "displayName": "NovaForge Dev World",
+  "description": "Deterministic runtime test map for Atlas Suite playtesting.",
+  "spawnPoint": "spawn_dev_room",
+  "zones": [
+    "spawn_room",
+    "rig_terminal",
+    "inventory_terminal",
+    "airlock_room",
+    "eva_lane",
+    "mech_bay",
+    "ship_hangar",
+    "builder_pad",
+    "combat_range",
+    "salvage_lane",
+    "mission_board",
+    "economy_debug",
+    "faction_debug",
+    "save_checkpoint"
+  ],
+  "deterministicSeed": 424242,
+  "entities": [
+    "spawn_dev_room",
+    "terminal_rig_loadout",
+    "terminal_inventory_crafting",
+    "airlock_a",
+    "mech_test_frame",
+    "ship_test_starter",
+    "builder_pad_a",
+    "combat_dummy_a",
+    "wreck_test_a",
+    "mission_board_a",
+    "market_debug_a",
+    "faction_debug_a",
+    "checkpoint_a"
+  ]
+}

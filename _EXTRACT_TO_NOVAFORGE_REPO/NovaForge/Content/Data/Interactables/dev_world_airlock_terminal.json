@@ -1,0 +1,13 @@
+{
+  "id": "dev_airlock_terminal_a",
+  "type": "airlock_terminal",
+  "targetAirlock": "airlock_test_a",
+  "allowedActions": [
+    "cycle",
+    "inner_door",
+    "outer_door",
+    "status"
+  ],
+  "requiresPower": true,
+  "requiresPermission": "operate"
+}

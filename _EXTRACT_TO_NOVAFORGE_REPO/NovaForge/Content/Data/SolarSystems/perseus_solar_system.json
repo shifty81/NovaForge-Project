@@ -1,0 +1,32 @@
+{
+  "id": "perseus_solar_system_001",
+  "name": "Perseus Veil System",
+  "version": "1.0",
+  "star": {
+    "id": "perseus_star_001",
+    "name": "Perseus Prime",
+    "type": "F5V",
+    "radius": 810000,
+    "luminosity": 2.8,
+    "temperature": 6600
+  },
+  "total_celestials": 9,
+  "celestials": [
+    { "id": "perseus_planet_001", "name": "Veil Cinder", "type": "RockyPlanet", "orbit_radius": 0.21, "radius": 2200, "habitable": false },
+    { "id": "perseus_planet_002", "name": "Veil Shroud", "type": "HotJupiter", "orbit_radius": 0.35, "radius": 88000, "habitable": false },
+    { "id": "perseus_planet_003", "name": "Veil Cradle", "type": "TerrestrialPlanet", "orbit_radius": 1.08, "radius": 6500, "habitable": true, "atmosphere": "nitrogen-oxygen-argon", "population": 3200000000 },
+    { "id": "perseus_moon_001", "name": "Veil Tide", "type": "Moon", "orbit_radius": 0.003, "radius": 1700, "habitable": false, "parent": "perseus_planet_003" },
+    { "id": "perseus_moon_002", "name": "Veil Glint", "type": "Moon", "orbit_radius": 0.005, "radius": 950, "habitable": false, "parent": "perseus_planet_003" },
+    { "id": "perseus_planet_004", "name": "Veil Expanse", "type": "GasGiant", "orbit_radius": 4.8, "radius": 78000, "habitable": false },
+    { "id": "perseus_planet_005", "name": "Veil Frost", "type": "IceGiant", "orbit_radius": 9.2, "radius": 26000, "habitable": false },
+    { "id": "perseus_station_001", "name": "Veil Anchorage", "type": "Station", "orbit_radius": 1.6, "radius": 8, "habitable": false },
+    { "id": "perseus_asteroid_belt_001", "name": "Veil Halo", "type": "AsteroidBelt", "orbit_radius": 3.1, "radius": 0, "habitable": false }
+  ],
+  "npc_factions": ["veil_keepers", "perseus_navigators"],
+  "hazards": ["solar_flare_zone", "debris_field"],
+  "pcg_config": {
+    "seed": 3100,
+    "hazard_level": "medium",
+    "resource_richness": "medium"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "id": "beta_solar_system_001",
+  "name": "Beta Solar System Kora",
+  "version": "1.0",
+  "star": {
+    "type": "K-type",
+    "radius": 600000,
+    "luminosity": 0.4
+  },
+  "celestials": [
+    {
+      "id": "kora_planet_001",
+      "type": "Planet",
+      "name": "Kora Prime",
+      "orbit_radius": 0.8,
+      "radius": 5500,
+      "pcg_seed": 100,
+      "atmosphere": "thin_oxygen"
+    },
+    {
+      "id": "kora_moon_001",
+      "type": "Moon",
+      "name": "Kora Moon I",
+      "orbit_radius": 0.803,
+      "radius": 1200,
+      "parent": "kora_planet_001",
+      "pcg_seed": 101
+    },
+    {
+      "id": "kora_planet_002",
+      "type": "Planet",
+      "name": "Kora Dusk",
+      "orbit_radius": 1.6,
+      "radius": 4800,
+      "pcg_seed": 102,
+      "atmosphere": "none"
+    },
+    {
+      "id": "kora_station_001",
+      "type": "Station",
+      "name": "Kora Outpost Gamma",
+      "orbit_radius": 1.4,
+      "faction": "frontier_union"
+    },
+    {
+      "id": "kora_asteroid_belt_001",
+      "type": "AsteroidBelt",
+      "name": "Kora Outer Belt",
+      "orbit_radius": 2.8,
+      "ore_types": ["omber", "kernite", "jaspet"]
+    },
+    {
+      "id": "kora_wormhole_001",
+      "type": "Wormhole",
+      "name": "Kora Rift",
+      "orbit_radius": 3.2,
+      "destination": "dev_solar_system_001"
+    },
+    {
+      "id": "kora_anomaly_001",
+      "type": "Anomaly",
+      "name": "Kora Derelict Site",
+      "orbit_radius": 2.0,
+      "anomaly_class": "B"
+    },
+    {
+      "id": "kora_stargate_001",
+      "type": "Stargate",
+      "name": "Kora Gate Alpha",
+      "orbit_radius": 4.5,
+      "destination_system": "dev_solar_system_001"
+    }
+  ],
+  "ship_spawn_points": 1,
+  "total_celestials": 8,
+  "npc_factions": ["frontier_raiders", "kora_defenders"],
+  "pcg_config": "solar_system_pcg_config.json"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "loot_derelict_engineering_room",
+  "rolls": 4,
+  "entries": [
+    { "item_id": "copper_wire", "weight": 30, "min": 2, "max": 8 },
+    { "item_id": "micro_core", "weight": 10, "min": 1, "max": 2 },
+    { "item_id": "steel_plate", "weight": 60, "min": 4, "max": 12 }
+  ]
+}

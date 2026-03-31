@@ -1,0 +1,12 @@
+{
+  "containers": [
+    {
+      "id": "station_cargo_main",
+      "capacity": 100
+    },
+    {
+      "id": "station_cargo_components",
+      "capacity": 75
+    }
+  ]
+}

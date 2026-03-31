@@ -1,0 +1,12 @@
+{
+  "id": "player_001",
+  "display_name": "Shifty",
+  "starter_items": [
+    { "item_id": "steel_plate", "count": 25 },
+    { "item_id": "copper_wire", "count": 20 },
+    { "item_id": "micro_core", "count": 3 }
+  ],
+  "starter_missions": [
+    "mission_salvage_derelict_001"
+  ]
+}

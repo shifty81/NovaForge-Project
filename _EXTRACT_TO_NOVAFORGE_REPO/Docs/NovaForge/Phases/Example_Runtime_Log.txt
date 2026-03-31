@@ -1,0 +1,20 @@
+[DataRegistry] Initialize Root=Data
+[DataRegistry] Loaded module reactor_mk1
+[DataRegistry] Loaded item steel_plate
+[DataRegistry] Loaded item copper_wire
+[DataRegistry] Loaded item micro_core
+[DataRegistry] Loaded item reactor_mk1_item
+[DataRegistry] Loaded recipe craft_reactor_mk1
+[DataRegistry] Loaded mission mission_salvage_derelict_001
+[DataRegistry] Loaded faction frontier_union
+[DataRegistry] Loaded loot loot_derelict_engineering_room
+[DataRegistry] Loaded player player_001
+[DataRegistry] Summary Modules=1 Items=4 Recipes=1 Missions=1 Factions=1 Loot=1 Players=1
+[Structures] Registered ship_dev_001
+[Voxels] Created Chunk ship_dev_001:0_0_0 Fill=1
+[Modules] Spawned Test Module mod_0001 on ship_dev_001
+[GameplayManager] Demo Loop Start
+[PlayerController] Move -> Pos(1, 0, 0)
+[CraftingSystem] Crafted craft_reactor_mk1
+[InteractionSystem] Interact TargetType=module TargetId=mod_0001
+[MissionSystem] Completed mission_salvage_derelict_001

@@ -1,0 +1,86 @@
+{
+  "id": "zeta_solar_system_001",
+  "name": "Zeta Solar System Oryn",
+  "version": "1.0",
+  "star": {
+    "type": "G2V",
+    "radius": 695700,
+    "luminosity": 1.0
+  },
+  "celestials": [
+    {
+      "id": "oryn_rocky_001",
+      "type": "Planet",
+      "name": "Oryn Cinder",
+      "orbit_radius": 0.4,
+      "radius": 2400,
+      "pcg_seed": 500,
+      "atmosphere": "none"
+    },
+    {
+      "id": "oryn_planet_001",
+      "type": "Planet",
+      "name": "Oryn Prime",
+      "orbit_radius": 1.0,
+      "radius": 6371,
+      "pcg_seed": 501,
+      "atmosphere": "nitrogen_oxygen"
+    },
+    {
+      "id": "oryn_moon_001",
+      "type": "Moon",
+      "name": "Oryn Crescent",
+      "orbit_radius": 1.003,
+      "radius": 1737,
+      "parent": "oryn_planet_001",
+      "pcg_seed": 502
+    },
+    {
+      "id": "oryn_station_001",
+      "type": "Station",
+      "name": "Oryn Apex Station",
+      "orbit_radius": 1.5,
+      "faction": "united_colonies"
+    },
+    {
+      "id": "oryn_stargate_001",
+      "type": "Stargate",
+      "name": "Oryn Gate Alpha",
+      "orbit_radius": 2.0,
+      "destination": "delta_solar_system_001"
+    },
+    {
+      "id": "oryn_asteroid_belt_001",
+      "type": "AsteroidBelt",
+      "name": "Oryn Stone Belt",
+      "orbit_radius": 2.7,
+      "ore_types": ["veldspar", "scordite", "pyroxeres"]
+    },
+    {
+      "id": "oryn_gas_giant_001",
+      "type": "GasGiant",
+      "name": "Oryn Mammoth",
+      "orbit_radius": 5.2,
+      "radius": 71492,
+      "pcg_seed": 503
+    },
+    {
+      "id": "oryn_ice_planet_001",
+      "type": "Planet",
+      "name": "Oryn Glacius",
+      "orbit_radius": 9.5,
+      "radius": 8400,
+      "pcg_seed": 504,
+      "atmosphere": "thin_methane"
+    }
+  ],
+  "total_celestials": 8,
+  "npc_factions": ["united_colonies", "frontier_traders", "void_hunters"],
+  "pcg_config": {
+    "seed": 500,
+    "density": 0.7,
+    "hazard_level": "low",
+    "resource_richness": "high",
+    "encounter_rate": "medium"
+  }
+}

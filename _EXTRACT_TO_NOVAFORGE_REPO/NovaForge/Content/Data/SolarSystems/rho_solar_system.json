@@ -1,0 +1,95 @@
+{
+  "id": "rho_solar_system_001",
+  "name": "Rho Brightfield System",
+  "version": "1.0",
+  "star": {
+    "type": "F8V",
+    "radius": 710000,
+    "luminosity": 1.5,
+    "temperature": 6200
+  },
+  "total_celestials": 8,
+  "celestials": [
+    {
+      "id": "brightfield_planet_001",
+      "name": "Brightfield Cinder",
+      "type": "Planet",
+      "orbit_radius": 0.4,
+      "radius": 3900,
+      "atmosphere": "thin_so2",
+      "habitable": false,
+      "pcg_seed": 1700
+    },
+    {
+      "id": "brightfield_planet_002",
+      "name": "Brightfield Veil",
+      "type": "Planet",
+      "orbit_radius": 0.8,
+      "radius": 6100,
+      "atmosphere": "thick_co2",
+      "habitable": false,
+      "pcg_seed": 1701
+    },
+    {
+      "id": "brightfield_planet_003",
+      "name": "Brightfield Solace",
+      "type": "Planet",
+      "orbit_radius": 1.3,
+      "radius": 7000,
+      "atmosphere": "nitrogen_oxygen",
+      "habitable": true,
+      "pcg_seed": 1702
+    },
+    {
+      "id": "brightfield_moon_001",
+      "name": "Brightfield Lantern",
+      "type": "Moon",
+      "orbit_radius": 1.31,
+      "radius": 2000,
+      "parent": "brightfield_planet_003",
+      "pcg_seed": 1703
+    },
+    {
+      "id": "brightfield_planet_004",
+      "name": "Brightfield Frost",
+      "type": "Planet",
+      "orbit_radius": 2.5,
+      "radius": 4500,
+      "atmosphere": "thin_methane",
+      "habitable": false,
+      "pcg_seed": 1704
+    },
+    {
+      "id": "brightfield_gas_giant_001",
+      "name": "Brightfield Titan",
+      "type": "GasGiant",
+      "orbit_radius": 5.5,
+      "radius": 62000,
+      "atmosphere": "hydrogen_helium",
+      "pcg_seed": 1705
+    },
+    {
+      "id": "brightfield_station_001",
+      "name": "Brightfield Nexus",
+      "type": "Station",
+      "orbit_radius": 1.8,
+      "faction": "brightfield_exchange"
+    },
+    {
+      "id": "brightfield_anomaly_001",
+      "name": "Brightfield Rift",
+      "type": "Anomaly",
+      "orbit_radius": 9.0,
+      "hazard_level": "extreme"
+    }
+  ],
+  "npc_factions": ["brightfield_exchange", "rho_prospectors", "solace_republic"],
+  "pcg_config": {
+    "seed": 1700,
+    "density": 0.62,
+    "hazard_level": "low",
+    "resource_richness": "abundant",
+    "encounter_rate": "medium"
+  },
+  "hazards": ["solar_wind", "radiation_belt"]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "craft_reactor_mk1",
+  "name": "Craft Reactor MK1",
+  "machine": "assembler_tier1",
+  "time_seconds": 45,
+  "inputs": [
+    { "item_id": "steel_plate", "count": 20 },
+    { "item_id": "copper_wire", "count": 15 },
+    { "item_id": "micro_core", "count": 2 }
+  ],
+  "outputs": [
+    { "item_id": "reactor_mk1_item", "count": 1 }
+  ],
+  "requirements": {
+    "skills": [
+      { "skill": "engineering", "level": 2 }
+    ],
+    "power_required": 50
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "mission_dev_salvage_intro",
+  "type": "salvage",
+  "displayName": "Dev: Recover Detached Plate",
+  "objectives": [
+    {"type": "reach", "target": "salvage_lane"},
+    {"type": "retrieve", "target": "loot_hull_plate_a"},
+    {"type": "deposit", "target": "container_dev_output"}
+  ],
+  "rewards": {
+    "credits": 1000,
+    "items": ["repair_patch_kit"]
+  }
+}

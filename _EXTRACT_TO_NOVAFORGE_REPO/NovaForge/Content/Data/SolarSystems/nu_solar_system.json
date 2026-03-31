@@ -1,0 +1,93 @@
+{
+  "id": "nu_solar_system_001",
+  "name": "Nu Caldris Expanse",
+  "version": "1.0",
+  "star": {
+    "type": "G8V",
+    "radius": 1350000,
+    "luminosity": 22.0,
+    "temperature": 5200
+  },
+  "total_celestials": 8,
+  "celestials": [
+    {
+      "id": "caldris_planet_001",
+      "name": "Caldris Ember",
+      "type": "Planet",
+      "orbit_radius": 3.2,
+      "radius": 3500,
+      "atmosphere": "carbon_dioxide",
+      "tidally_locked": true,
+      "habitable": false,
+      "pcg_seed": 1300
+    },
+    {
+      "id": "caldris_planet_002",
+      "name": "Caldris Shore",
+      "type": "Planet",
+      "orbit_radius": 8.5,
+      "radius": 6100,
+      "atmosphere": "nitrogen_oxygen",
+      "habitable": true,
+      "pcg_seed": 1301
+    },
+    {
+      "id": "caldris_moon_001",
+      "name": "Caldris Pale Drift",
+      "type": "Moon",
+      "orbit_radius": 8.52,
+      "radius": 1400,
+      "parent": "caldris_planet_002",
+      "pcg_seed": 1302
+    },
+    {
+      "id": "caldris_planet_003",
+      "name": "Caldris Rust",
+      "type": "Planet",
+      "orbit_radius": 15.0,
+      "radius": 4800,
+      "atmosphere": "thin_carbon_dioxide",
+      "habitable": false,
+      "pcg_seed": 1303
+    },
+    {
+      "id": "caldris_gas_giant_001",
+      "name": "Caldris Titan",
+      "type": "GasGiant",
+      "orbit_radius": 28.0,
+      "radius": 68000,
+      "atmosphere": "hydrogen_helium",
+      "pcg_seed": 1304
+    },
+    {
+      "id": "caldris_asteroid_belt_001",
+      "name": "Caldris Shatter Band",
+      "type": "AsteroidBelt",
+      "orbit_radius": 45.0,
+      "ore_types": ["veldspar", "scordite", "omber", "kernite"]
+    },
+    {
+      "id": "caldris_station_001",
+      "name": "Caldris Waypost",
+      "type": "Station",
+      "orbit_radius": 20.0,
+      "faction": "caldris_union"
+    },
+    {
+      "id": "caldris_anomaly_001",
+      "name": "Caldris Null Fold",
+      "type": "Anomaly",
+      "orbit_radius": 80.0,
+      "hazard_level": "medium"
+    }
+  ],
+  "npc_factions": ["caldris_union", "nu_privateers"],
+  "pcg_config": {
+    "seed": 1300,
+    "density": 0.5,
+    "hazard_level": "medium",
+    "resource_richness": "moderate",
+    "encounter_rate": "medium"
+  },
+  "hazards": ["solar_flare_zone"]
+}

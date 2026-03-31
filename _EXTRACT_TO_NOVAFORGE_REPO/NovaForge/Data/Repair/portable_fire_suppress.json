@@ -1,0 +1,12 @@
+{
+  "id": "portable_fire_suppress",
+  "toolRequired": "suppression_canister",
+  "materialsRequired": [
+    "suppressant_charge"
+  ],
+  "timeSec": 3.0,
+  "restores": {
+    "extinguishFire": true,
+    "reduceHeat": 20.0
+  }
+}

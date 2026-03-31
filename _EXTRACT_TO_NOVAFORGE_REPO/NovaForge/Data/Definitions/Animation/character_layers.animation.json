@@ -1,0 +1,9 @@
+{
+  "layers": [
+    { "type": "base_locomotion", "default_clip": "anim_fps_idle" },
+    { "type": "additive_breathing", "default_clip": "anim_add_breathing" },
+    { "type": "upper_body_tool", "default_clip": "anim_tool_idle" },
+    { "type": "fingers", "default_clip": "anim_fingers_relaxed" },
+    { "type": "procedural_offsets", "default_clip": "proc_offsets" }
+  ]
+}

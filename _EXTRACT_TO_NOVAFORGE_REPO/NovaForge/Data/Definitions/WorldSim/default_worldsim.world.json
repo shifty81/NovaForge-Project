@@ -1,0 +1,6 @@
+{
+  "time_scale": 1.0,
+  "contract_refresh_ticks": 20,
+  "trade_update_ticks": 10,
+  "influence_decay_enabled": false
+}

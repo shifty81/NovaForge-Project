@@ -1,0 +1,7 @@
+{
+  "id": "default_tether",
+  "max_length": 50.0,
+  "supplies_oxygen": true,
+  "supplies_power": true,
+  "auto_retract": true
+}

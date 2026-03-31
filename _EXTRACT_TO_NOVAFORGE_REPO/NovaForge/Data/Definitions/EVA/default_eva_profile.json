@@ -1,0 +1,7 @@
+{
+  "id": "default_eva_profile",
+  "thrust_power": 1.0,
+  "dampening_enabled": true,
+  "starting_oxygen": 100.0,
+  "starting_power": 100.0
+}

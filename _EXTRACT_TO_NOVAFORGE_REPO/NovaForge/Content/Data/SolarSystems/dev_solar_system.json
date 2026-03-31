@@ -1,0 +1,76 @@
+{
+  "id": "dev_solar_system_001",
+  "name": "Dev Solar System Alpha",
+  "version": "1.0",
+  "star": {
+    "type": "G-type",
+    "radius": 695700,
+    "luminosity": 1.0
+  },
+  "celestials": [
+    {
+      "id": "planet_001",
+      "type": "Planet",
+      "name": "Forge Prime",
+      "orbit_radius": 1.0,
+      "radius": 6371,
+      "pcg_seed": 42
+    },
+    {
+      "id": "station_001",
+      "type": "Station",
+      "name": "Dev Station Alpha",
+      "orbit_radius": 1.2,
+      "faction": "developer"
+    },
+    {
+      "id": "asteroid_belt_001",
+      "type": "AsteroidBelt",
+      "name": "Dev Belt",
+      "orbit_radius": 2.2,
+      "ore_types": ["veldspar", "scordite", "pyroxeres"]
+    },
+    {
+      "id": "wormhole_001",
+      "type": "Wormhole",
+      "name": "Dev Wormhole",
+      "orbit_radius": 3.5,
+      "destination": "null_sec_001"
+    },
+    {
+      "id": "anomaly_001",
+      "type": "Anomaly",
+      "name": "Dev Anomaly Site",
+      "orbit_radius": 1.8,
+      "anomaly_class": "A"
+    },
+    {
+      "id": "moon_001",
+      "type": "Moon",
+      "name": "Dev Moon Alpha",
+      "orbit_radius": 1.003,
+      "radius": 1737,
+      "parent": "planet_001",
+      "pcg_seed": 43
+    },
+    {
+      "id": "stargate_001",
+      "type": "Stargate",
+      "name": "Dev Stargate Alpha",
+      "orbit_radius": 4.8,
+      "destination_system": "dev_solar_system_002"
+    },
+    {
+      "id": "ship_spawn_001",
+      "type": "ShipSpawnPoint",
+      "name": "Dev Spawn Alpha",
+      "orbit_radius": 1.5,
+      "faction": "developer",
+      "max_ships": 5
+    }
+  ],
+  "ship_spawn_points": 1,
+  "total_celestials": 8,
+  "npc_factions": ["developer_pirates", "dev_npcs"],
+  "pcg_config": "solar_system_pcg_config.json"
+}

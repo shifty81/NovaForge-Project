@@ -1,0 +1,33 @@
+{
+  "id": "scorpius_solar_system_001",
+  "name": "Scorpius Rift System",
+  "version": "1.0",
+  "star": {
+    "id": "scorpius_star_001",
+    "name": "Scorpius Prime",
+    "type": "K1V",
+    "radius": 640000,
+    "luminosity": 0.61,
+    "temperature": 5200
+  },
+  "total_celestials": 10,
+  "celestials": [
+    { "id": "scorpius_planet_001", "name": "Rift Ember", "type": "RockyPlanet", "orbit_radius": 0.22, "radius": 2900, "habitable": false },
+    { "id": "scorpius_planet_002", "name": "Rift Shroud", "type": "VenusTwin", "orbit_radius": 0.68, "radius": 5900, "habitable": false, "atmosphere": "sulfur-dioxide" },
+    { "id": "scorpius_planet_003", "name": "Rift Haven", "type": "TerrestrialPlanet", "orbit_radius": 1.08, "radius": 6400, "habitable": true, "atmosphere": "nitrogen-oxygen", "population": 2100000000 },
+    { "id": "scorpius_moon_001", "name": "Rift Pale", "type": "Moon", "orbit_radius": 0.0026, "radius": 1720, "habitable": false, "parent": "scorpius_planet_003" },
+    { "id": "scorpius_moon_002", "name": "Rift Ash", "type": "Moon", "orbit_radius": 0.0042, "radius": 840, "habitable": false, "parent": "scorpius_planet_003" },
+    { "id": "scorpius_moon_003", "name": "Rift Mote", "type": "Moon", "orbit_radius": 0.0065, "radius": 460, "habitable": false, "parent": "scorpius_planet_003" },
+    { "id": "scorpius_planet_004", "name": "Rift Colossus", "type": "GasGiant", "orbit_radius": 5.8, "radius": 94000, "habitable": false },
+    { "id": "scorpius_planet_005", "name": "Rift Chill", "type": "IceGiant", "orbit_radius": 10.9, "radius": 25000, "habitable": false },
+    { "id": "scorpius_station_001", "name": "Rift Outpost", "type": "Station", "orbit_radius": 1.42, "radius": 7, "habitable": false },
+    { "id": "scorpius_asteroid_belt_001", "name": "Rift Debris", "type": "AsteroidBelt", "orbit_radius": 3.3, "radius": 0, "habitable": false }
+  ],
+  "npc_factions": ["scorpius_rift_cartel", "rift_prospectors_union", "outer_void_collective"],
+  "hazards": ["gravitational_anomaly", "coronal_mass_ejection"],
+  "pcg_config": {
+    "seed": 4700,
+    "hazard_level": "high",
+    "resource_richness": "medium"
+  }
+}

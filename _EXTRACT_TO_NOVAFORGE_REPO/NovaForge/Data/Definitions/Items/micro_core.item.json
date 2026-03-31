@@ -1,0 +1,10 @@
+{
+  "id": "micro_core",
+  "name": "Micro Core",
+  "category": "component",
+  "stack_size": 20,
+  "mass": 1.0,
+  "volume": 0.5,
+  "tags": ["crafting", "power", "advanced"],
+  "value": 120
+}

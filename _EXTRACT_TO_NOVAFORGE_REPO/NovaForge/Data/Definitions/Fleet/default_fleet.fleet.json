@@ -1,0 +1,16 @@
+{
+  "fleets": [
+    {
+      "id": "fleet_player_001",
+      "name": "Shifty Expedition Group",
+      "members": [
+        { "ship_id": "ship_player_001", "role": "flagship", "active": true },
+        { "ship_id": "ship_hauler_001", "role": "logistics", "active": true }
+      ],
+      "assignments": [
+        { "assignment_id": "assignment_patrol_home", "type": "patrol", "target_location_id": "sector_home", "notes": "Maintain local security sweep" },
+        { "assignment_id": "assignment_haul_station", "type": "haul", "target_location_id": "frontier_station_alpha", "notes": "Transport recovered materials" }
+      ]
+    }
+  ]
+}

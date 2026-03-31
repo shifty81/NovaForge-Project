@@ -1,0 +1,31 @@
+{
+  "id": "phi_solar_system_001",
+  "name": "Phi Ashenwing System",
+  "version": "1.0",
+  "star": {
+    "id": "phi_star_001",
+    "name": "Phi Prime",
+    "type": "F3V",
+    "radius": 740000,
+    "luminosity": 1.45,
+    "temperature": 6800
+  },
+  "total_celestials": 8,
+  "celestials": [
+    { "id": "phi_planet_001", "name": "Ashenwing Scorch", "type": "RockyPlanet", "orbit_radius": 0.35, "radius": 2900, "habitable": false },
+    { "id": "phi_planet_002", "name": "Ashenwing Drift", "type": "RockyPlanet", "orbit_radius": 0.75, "radius": 5400, "habitable": false },
+    { "id": "phi_planet_003", "name": "Ashenwing Cradle", "type": "TerrestrialPlanet", "orbit_radius": 1.2, "radius": 6200, "habitable": true, "atmosphere": "nitrogen-oxygen", "population": 2100000000 },
+    { "id": "phi_moon_001", "name": "Ashenwing Sentinel", "type": "Moon", "orbit_radius": 0.003, "radius": 1820, "habitable": false, "parent": "phi_planet_003" },
+    { "id": "phi_planet_004", "name": "Ashenwing Giant", "type": "GasGiant", "orbit_radius": 3.5, "radius": 71000, "habitable": false },
+    { "id": "phi_planet_005", "name": "Ashenwing Shiver", "type": "IcePlanet", "orbit_radius": 8.2, "radius": 11500, "habitable": false },
+    { "id": "phi_station_001", "name": "Ashenwing Nexus", "type": "Station", "orbit_radius": 1.6, "radius": 3, "habitable": false },
+    { "id": "phi_anomaly_001", "name": "Ashenwing Singularity", "type": "Anomaly", "orbit_radius": 6.0, "radius": 30, "habitable": false }
+  ],
+  "npc_factions": ["ashenwing_coalition", "outer_drift_syndicate"],
+  "hazards": ["ion_storm", "gravity_shear"],
+  "pcg_config": {
+    "seed": 2100,
+    "hazard_level": "medium",
+    "resource_richness": "abundant"
+  }
+}

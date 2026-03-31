@@ -1,0 +1,6 @@
+{
+  "defaultMechRef": "Data/Constructs/dev_mech_mk1.json",
+  "defaultShipRef": "Data/Constructs/dev_ship_starter.json",
+  "spawnConstructs": true,
+  "allowPossessionSmokeTest": true
+}

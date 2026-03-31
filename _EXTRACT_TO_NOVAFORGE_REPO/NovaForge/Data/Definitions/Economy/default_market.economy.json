@@ -1,0 +1,9 @@
+{
+  "market_values": [
+    { "item_id": "steel_plate", "base_value": 15, "demand_modifier": 1.0, "supply_modifier": 1.0 },
+    { "item_id": "copper_wire", "base_value": 8, "demand_modifier": 1.1, "supply_modifier": 1.0 },
+    { "item_id": "micro_core", "base_value": 120, "demand_modifier": 1.25, "supply_modifier": 0.95 },
+    { "item_id": "iron_ore", "base_value": 6, "demand_modifier": 1.0, "supply_modifier": 1.0 },
+    { "item_id": "copper_ore", "base_value": 9, "demand_modifier": 1.05, "supply_modifier": 1.0 }
+  ]
+}

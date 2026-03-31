@@ -1,0 +1,31 @@
+{
+  "upgrades": [
+    {
+      "id": "reactor_mk2_upgrade",
+      "category": "reactor",
+      "tier": 2,
+      "modifiers": [
+        { "stat": "power_generation", "value": 150.0 },
+        { "stat": "heat_output", "value": 20.0 }
+      ]
+    },
+    {
+      "id": "mining_laser_mk2_upgrade",
+      "category": "mining_tool",
+      "tier": 2,
+      "modifiers": [
+        { "stat": "extraction_rate", "value": 0.35 },
+        { "stat": "power_efficiency", "value": 0.2 }
+      ]
+    },
+    {
+      "id": "salvage_cutter_mk2_upgrade",
+      "category": "salvage_tool",
+      "tier": 2,
+      "modifiers": [
+        { "stat": "cut_speed", "value": 0.4 },
+        { "stat": "durability", "value": 0.25 }
+      ]
+    }
+  ]
+}

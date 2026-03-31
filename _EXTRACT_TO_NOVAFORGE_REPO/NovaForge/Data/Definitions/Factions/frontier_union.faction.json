@@ -1,0 +1,15 @@
+{
+  "id": "frontier_union",
+  "name": "Frontier Union",
+  "alignment": "neutral",
+  "traits": ["industrial", "defensive", "trade_focused"],
+  "pcg_style": {
+    "architecture": "modular_industrial",
+    "materials": ["yellow_paint", "steel", "panel_glass"],
+    "interior_density": 0.7
+  },
+  "relations": {
+    "pirates": -60,
+    "player": 0
+  }
+}

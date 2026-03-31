@@ -1,0 +1,13 @@
+{
+  "devWorldConstructId": "dev_builder_salvage_construct",
+  "defaultPlacementPartId": "hull_plate_mk1_a",
+  "defaultSnapProfile": "grid_1m",
+  "defaultRecoveryContainerId": "dev_loot_container_a",
+  "validationPasses": [
+    "structure",
+    "mount",
+    "clearance"
+  ],
+  "enableGhostPlacement": true,
+  "enableSalvageDebug": true
+}

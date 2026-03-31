@@ -1,0 +1,13 @@
+{
+  "id": "player_character_001",
+  "display_name": "Player Character",
+  "height_meters": 1.8,
+  "eye_height_meters": 1.68,
+  "movement_mode": "fps",
+  "sockets": [
+    { "id": "socket_hand_r", "bone": "hand_r", "allowed_category": "tool" },
+    { "id": "socket_hand_l", "bone": "hand_l", "allowed_category": "tool" },
+    { "id": "socket_backpack", "bone": "spine_back", "allowed_category": "backpack" },
+    { "id": "socket_helmet", "bone": "head", "allowed_category": "helmet" }
+  ]
+}

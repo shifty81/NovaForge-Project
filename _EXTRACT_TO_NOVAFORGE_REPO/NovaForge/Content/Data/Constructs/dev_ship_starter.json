@@ -1,0 +1,10 @@
+{
+  "id": "dev_ship_starter",
+  "constructClass": "ship",
+  "displayName": "Dev Starter Ship",
+  "entryPoints": ["cockpit_main", "airlock_side_a"],
+  "cameraProfile": "ship_pilot_default",
+  "inputProfile": "ship_pilot_default",
+  "moduleRefs": ["reactor_compact_mk1", "thruster_basic_a", "cargo_control_a"],
+  "cargoContainerRef": "ship_cargo_dev"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "hull_plate_mk1_a",
+  "displayName": "Hull Plate Mk1 A",
+  "family": "hull",
+  "tier": 1,
+  "mass": 12.0,
+  "durability": 250.0,
+  "snapProfile": "grid_1m",
+  "allowedConstructs": ["ship", "station", "wreck"],
+  "recoveryTableId": "recovery_hull_plate_mk1_a"
+}

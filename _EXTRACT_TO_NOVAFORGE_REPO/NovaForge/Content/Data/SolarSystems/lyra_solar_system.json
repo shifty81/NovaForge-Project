@@ -1,0 +1,33 @@
+{
+  "id": "lyra_solar_system_001",
+  "name": "Lyra Resonance System",
+  "version": "1.0",
+  "star": {
+    "id": "lyra_star_001",
+    "name": "Lyra Prime",
+    "type": "A2V",
+    "radius": 1100000,
+    "luminosity": 2.4,
+    "temperature": 8700
+  },
+  "total_celestials": 10,
+  "celestials": [
+    { "id": "lyra_planet_001", "name": "Resonance Crucible", "type": "RockyPlanet", "orbit_radius": 0.45, "radius": 3100, "habitable": false },
+    { "id": "lyra_planet_002", "name": "Resonance Bloom", "type": "VenusTwin", "orbit_radius": 1.1, "radius": 6200, "habitable": false, "atmosphere": "sulfur-dioxide" },
+    { "id": "lyra_planet_003", "name": "Resonance Cradle", "type": "TerrestrialPlanet", "orbit_radius": 2.0, "radius": 6600, "habitable": true, "atmosphere": "nitrogen-oxygen", "population": 3800000000 },
+    { "id": "lyra_moon_001", "name": "Resonance Shade", "type": "Moon", "orbit_radius": 0.003, "radius": 1800, "habitable": false, "parent": "lyra_planet_003" },
+    { "id": "lyra_moon_002", "name": "Resonance Glint", "type": "Moon", "orbit_radius": 0.005, "radius": 950, "habitable": false, "parent": "lyra_planet_003" },
+    { "id": "lyra_moon_003", "name": "Resonance Flicker", "type": "Moon", "orbit_radius": 0.008, "radius": 510, "habitable": false, "parent": "lyra_planet_003" },
+    { "id": "lyra_planet_004", "name": "Resonance Titan", "type": "GasGiant", "orbit_radius": 6.2, "radius": 98000, "habitable": false },
+    { "id": "lyra_planet_005", "name": "Resonance Frost", "type": "IceGiant", "orbit_radius": 11.5, "radius": 26000, "habitable": false },
+    { "id": "lyra_station_001", "name": "Lyra Waypoint", "type": "Station", "orbit_radius": 2.35, "radius": 8, "habitable": false },
+    { "id": "lyra_asteroid_belt_001", "name": "Resonance Shards", "type": "AsteroidBelt", "orbit_radius": 3.8, "radius": 0, "habitable": false }
+  ],
+  "npc_factions": ["lyra_harmonic_guild", "resonance_explorers", "deep_veil_syndicate"],
+  "hazards": ["harmonic_radiation_belt", "micro_meteor_swarm"],
+  "pcg_config": {
+    "seed": 4600,
+    "hazard_level": "medium",
+    "resource_richness": "high"
+  }
+}

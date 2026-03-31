@@ -1,0 +1,94 @@
+{
+  "id": "omicron_solar_system_001",
+  "name": "Omicron Crestfall System",
+  "version": "1.0",
+  "star": {
+    "type": "K7V",
+    "radius": 590000,
+    "luminosity": 0.22,
+    "temperature": 3900
+  },
+  "total_celestials": 8,
+  "celestials": [
+    {
+      "id": "crestfall_planet_001",
+      "name": "Crestfall Cinder",
+      "type": "Planet",
+      "orbit_radius": 0.4,
+      "radius": 2800,
+      "atmosphere": "thin_co2",
+      "habitable": false,
+      "pcg_seed": 1500
+    },
+    {
+      "id": "crestfall_planet_002",
+      "name": "Crestfall Verdant",
+      "type": "Planet",
+      "orbit_radius": 0.9,
+      "radius": 6400,
+      "atmosphere": "nitrogen_oxygen",
+      "habitable": true,
+      "pcg_seed": 1501
+    },
+    {
+      "id": "crestfall_moon_001",
+      "name": "Crestfall Pale Eye",
+      "type": "Moon",
+      "orbit_radius": 0.905,
+      "radius": 1740,
+      "parent": "crestfall_planet_002",
+      "pcg_seed": 1502
+    },
+    {
+      "id": "crestfall_planet_003",
+      "name": "Crestfall Murk",
+      "type": "Planet",
+      "orbit_radius": 1.7,
+      "radius": 4200,
+      "atmosphere": "thick_methane",
+      "habitable": false,
+      "pcg_seed": 1503
+    },
+    {
+      "id": "crestfall_gas_giant_001",
+      "name": "Crestfall Grand",
+      "type": "GasGiant",
+      "orbit_radius": 4.5,
+      "radius": 63000,
+      "atmosphere": "hydrogen_helium",
+      "pcg_seed": 1504
+    },
+    {
+      "id": "crestfall_ice_giant_001",
+      "name": "Crestfall Frost",
+      "type": "IceGiant",
+      "orbit_radius": 9.0,
+      "radius": 24000,
+      "atmosphere": "water_ice",
+      "pcg_seed": 1505
+    },
+    {
+      "id": "crestfall_station_001",
+      "name": "Crestfall Waystation",
+      "type": "Station",
+      "orbit_radius": 1.2,
+      "faction": "crestfall_guild"
+    },
+    {
+      "id": "crestfall_anomaly_001",
+      "name": "Crestfall Rift Node",
+      "type": "Anomaly",
+      "orbit_radius": 15.0,
+      "hazard_level": "extreme"
+    }
+  ],
+  "npc_factions": ["crestfall_guild", "omicron_scavengers", "verdant_republic"],
+  "pcg_config": {
+    "seed": 1500,
+    "density": 0.6,
+    "hazard_level": "high",
+    "resource_richness": "abundant",
+    "encounter_rate": "medium"
+  },
+  "hazards": ["magnetic_storm_zone", "debris_cascade"]
+}

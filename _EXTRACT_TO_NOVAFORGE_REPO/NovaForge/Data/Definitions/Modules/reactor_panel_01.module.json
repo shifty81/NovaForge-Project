@@ -1,0 +1,6 @@
+{
+  "id": "reactor_panel_01",
+  "name": "Reactor Panel",
+  "category": "reactor_panel",
+  "interaction": { "interactable": true }
+}

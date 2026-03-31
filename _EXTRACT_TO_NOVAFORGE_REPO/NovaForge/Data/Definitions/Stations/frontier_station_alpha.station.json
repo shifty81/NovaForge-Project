@@ -1,0 +1,12 @@
+{
+  "id": "frontier_station_alpha",
+  "name": "Frontier Station Alpha",
+  "tier": 1,
+  "services": [
+    { "id": "repair", "available": true },
+    { "id": "resupply", "available": true },
+    { "id": "trade", "available": true },
+    { "id": "manufacturing", "available": true },
+    { "id": "storage", "available": true }
+  ]
+}

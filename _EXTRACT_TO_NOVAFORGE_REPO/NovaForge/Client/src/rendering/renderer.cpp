@@ -1,0 +1,791 @@
+#include "rendering/renderer.h"
+#include "rendering/shader.h"
+#include "rendering/camera.h"
+#include "rendering/model.h"
+#include "rendering/healthbar_renderer.h"
+#include "rendering/warp_effect_renderer.h"
+#include "core/entity.h"
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include <glm/gtc/matrix_inverse.hpp>
+#include <iostream>
+#include <random>
+#include <algorithm>
+#define _USE_MATH_DEFINES
+#include <cmath>
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
+namespace atlas {
+
+// ── Hangar surface colours ────────────────────────────────────────────────
+// Defined at file scope so they can be tuned without recompiling all geometry.
+static const glm::vec3 HANGAR_COL_FLOOR  (0.22f, 0.22f, 0.24f);  // dark concrete
+static const glm::vec3 HANGAR_COL_CEILING(0.28f, 0.28f, 0.30f);  // lighter grey metal
+static const glm::vec3 HANGAR_COL_WALL   (0.30f, 0.32f, 0.35f);  // steel blue-grey
+static const glm::vec3 HANGAR_COL_PAD_TOP(0.35f, 0.30f, 0.20f);  // worn amber markings
+static const glm::vec3 HANGAR_COL_PAD_EDG(0.25f, 0.25f, 0.28f);  // dark edge
+static const glm::vec3 HANGAR_COL_CATWALK(0.20f, 0.22f, 0.25f);  // darker catwalk
+
+Renderer::Renderer()
+    : m_nebulaVAO(0)
+    , m_nebulaVBO(0)
+    , m_starfieldVAO(0)
+    , m_starfieldVBO(0)
+    , m_starCount(4000)
+    , m_sunVAO(0)
+    , m_sunVBO(0)
+    , m_sunEBO(0)
+    , m_sunIndexCount(0)
+    , m_sunEnabled(false)
+    , m_sunPosition(0.0f)
+    , m_sunColor(1.0f, 0.95f, 0.85f)
+    , m_sunRadius(500000.0f)
+    , m_initialized(false)
+{
+}
+
+Renderer::~Renderer() {
+    if (m_nebulaVAO != 0) {
+        glDeleteVertexArrays(1, &m_nebulaVAO);
+    }
+    if (m_nebulaVBO != 0) {
+        glDeleteBuffers(1, &m_nebulaVBO);
+    }
+    if (m_starfieldVAO != 0) {
+        glDeleteVertexArrays(1, &m_starfieldVAO);
+    }
+    if (m_starfieldVBO != 0) {
+        glDeleteBuffers(1, &m_starfieldVBO);
+    }
+    if (m_sunVAO != 0) {
+        glDeleteVertexArrays(1, &m_sunVAO);
+    }
+    if (m_sunVBO != 0) {
+        glDeleteBuffers(1, &m_sunVBO);
+    }
+    if (m_sunEBO != 0) {
+        glDeleteBuffers(1, &m_sunEBO);
+    }
+    if (m_hangarVAO != 0) {
+        glDeleteVertexArrays(1, &m_hangarVAO);
+    }
+    if (m_hangarVBO != 0) {
+        glDeleteBuffers(1, &m_hangarVBO);
+    }
+}
+
+bool Renderer::initialize() {
+    std::cout << "Initializing renderer..." << std::endl;
+    
+    // Initialize GLEW
+    glewExperimental = GL_TRUE;
+    GLenum err = glewInit();
+    if (err != GLEW_OK) {
+        std::cerr << "Failed to initialize GLEW: " << glewGetErrorString(err) << std::endl;
+        return false;
+    }
+    
+    std::cout << "OpenGL " << glGetString(GL_VERSION) << std::endl;
+    std::cout << "Renderer: " << glGetString(GL_RENDERER) << std::endl;
+    
+    // Enable features
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_MULTISAMPLE);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
+    // Load shaders
+    m_basicShader = std::make_unique<Shader>();
+    if (!m_basicShader->loadFromFiles("shaders/basic.vert", "shaders/basic.frag")) {
+        std::cerr << "Failed to load basic shader — scene will not render." << std::endl;
+        std::cerr << "  Ensure shaders/ directory is next to the executable or set CWD to the project root." << std::endl;
+        return false;
+    }
+    std::cout << "  Loaded basic shader" << std::endl;
+    
+    m_starfieldShader = std::make_unique<Shader>();
+    if (!m_starfieldShader->loadFromFiles("shaders/starfield.vert", "shaders/starfield.frag")) {
+        std::cerr << "Failed to load starfield shader — scene will not render." << std::endl;
+        std::cerr << "  Ensure shaders/ directory is next to the executable or set CWD to the project root." << std::endl;
+        return false;
+    }
+    std::cout << "  Loaded starfield shader" << std::endl;
+    
+    m_nebulaShader = std::make_unique<Shader>();
+    if (!m_nebulaShader->loadFromFiles("shaders/nebula.vert", "shaders/nebula.frag")) {
+        std::cerr << "Warning: Failed to load nebula shader - nebula disabled" << std::endl;
+        m_nebulaShader.reset();
+    } else {
+        std::cout << "  Loaded nebula shader" << std::endl;
+    }
+    
+    m_entityShader = std::make_unique<Shader>();
+    if (!m_entityShader->loadFromFiles("shaders/entity.vert", "shaders/entity.frag")) {
+        std::cerr << "Failed to load entity shader — scene will not render." << std::endl;
+        std::cerr << "  Ensure shaders/ directory is next to the executable or set CWD to the project root." << std::endl;
+        return false;
+    }
+    std::cout << "  Loaded entity shader" << std::endl;
+    
+    // Initialize health bar renderer
+    m_healthBarRenderer = std::make_unique<HealthBarRenderer>();
+    if (!m_healthBarRenderer->initialize()) {
+        std::cerr << "Failed to initialize health bar renderer" << std::endl;
+        return false;
+    }
+    
+    // Initialize warp effect renderer
+    m_warpEffectRenderer = std::make_unique<WarpEffectRenderer>();
+    if (!m_warpEffectRenderer->initialize()) {
+        std::cerr << "Warning: Warp effect renderer failed — warp tunnel disabled" << std::endl;
+        // Non-fatal: game continues without warp tunnel visuals
+    }
+    
+    // Setup nebula background
+    setupNebula();
+    
+    // Setup starfield
+    setupStarfield();
+    
+    // Setup sun sphere
+    setupSunMesh();
+
+    // Setup hangar environment
+    setupHangar();
+    
+    m_initialized = true;
+    std::cout << "Renderer initialized successfully" << std::endl;
+    return true;
+}
+
+void Renderer::beginFrame() {
+    // Nothing needed here for now
+}
+
+void Renderer::endFrame() {
+    // Nothing needed here for now
+}
+
+void Renderer::renderScene(Camera& camera, int gameState) {
+    if (!m_initialized) return;
+
+    // Game states: 0=InSpace, 1=Docking, 2=Docked, 3=StationInterior,
+    //              4=ShipInterior, 5=Cockpit
+    bool inHangar = (gameState == 2 || gameState == 3 || gameState == 4);
+
+    if (inHangar) {
+        // Render the station hangar environment
+        renderHangar(camera);
+    } else {
+        // Render space environment
+        renderNebula(camera);
+        renderStarfield(camera);
+        if (m_sunEnabled) {
+            renderSun(camera, m_sunPosition, m_sunColor, m_sunRadius);
+        }
+        // Render celestial objects (planets, stations, gates, belts)
+        renderCelestials(camera);
+    }
+
+    // Always render entities (player ship visible in hangar too)
+    renderEntities(camera);
+    
+    // Note: Health bars are NOT rendered in 3D space in Astralis
+    // They are displayed in the target list UI panel instead
+}
+
+void Renderer::clear(const glm::vec4& color) {
+    glClearColor(color.r, color.g, color.b, color.a);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+void Renderer::setViewport(int x, int y, int width, int height) {
+    glViewport(x, y, width, height);
+}
+
+void Renderer::setupNebula() {
+    // Full-screen quad (two triangles in NDC)
+    float quadVertices[] = {
+        -1.0f, -1.0f,
+         1.0f, -1.0f,
+         1.0f,  1.0f,
+        -1.0f, -1.0f,
+         1.0f,  1.0f,
+        -1.0f,  1.0f
+    };
+
+    glGenVertexArrays(1, &m_nebulaVAO);
+    glGenBuffers(1, &m_nebulaVBO);
+
+    glBindVertexArray(m_nebulaVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, m_nebulaVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), quadVertices, GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    glBindVertexArray(0);
+    std::cout << "Nebula background setup complete" << std::endl;
+}
+
+void Renderer::renderNebula(Camera& camera) {
+    if (!m_nebulaShader || m_nebulaVAO == 0) return;
+
+    glDepthMask(GL_FALSE);
+    glDisable(GL_DEPTH_TEST);
+
+    m_nebulaShader->use();
+    glm::mat4 invViewProj = glm::inverse(camera.getProjectionMatrix() * camera.getViewMatrix());
+    m_nebulaShader->setMat4("invViewProj", invViewProj);
+
+    glBindVertexArray(m_nebulaVAO);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+    glBindVertexArray(0);
+
+    glEnable(GL_DEPTH_TEST);
+    glDepthMask(GL_TRUE);
+}
+
+void Renderer::setupStarfield() {
+    std::cout << "Setting up starfield with " << m_starCount << " stars..." << std::endl;
+    
+    // Generate random star positions
+    std::vector<float> vertices;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<float> posDist(-5000.0f, 5000.0f);
+    std::uniform_real_distribution<float> sizeDist(1.0f, 3.0f);
+    std::uniform_real_distribution<float> brightDist(0.3f, 1.0f);
+    
+    for (int i = 0; i < m_starCount; ++i) {
+        // Position (x, y, z)
+        vertices.push_back(posDist(gen));
+        vertices.push_back(posDist(gen));
+        vertices.push_back(posDist(gen));
+        
+        // Size
+        vertices.push_back(sizeDist(gen));
+        
+        // Brightness (color will be white with varying alpha)
+        vertices.push_back(brightDist(gen));
+    }
+    
+    // Create VAO and VBO
+    glGenVertexArrays(1, &m_starfieldVAO);
+    glGenBuffers(1, &m_starfieldVBO);
+    
+    glBindVertexArray(m_starfieldVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, m_starfieldVBO);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
+    
+    // Position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    
+    // Size attribute
+    glVertexAttribPointer(1, 1, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+    
+    // Brightness attribute
+    glVertexAttribPointer(2, 1, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(4 * sizeof(float)));
+    glEnableVertexAttribArray(2);
+    
+    glBindVertexArray(0);
+    
+    std::cout << "Starfield setup complete" << std::endl;
+}
+
+void Renderer::renderStarfield(Camera& camera) {
+    if (m_starfieldVAO == 0) return;
+    
+    // Disable depth writing for starfield
+    glDepthMask(GL_FALSE);
+    // Enable shader-controlled point size so gl_PointSize in the vertex
+    // shader takes effect (without this, all points are 1 px).
+    glEnable(GL_PROGRAM_POINT_SIZE);
+    
+    m_starfieldShader->use();
+    // Strip translation from the view matrix so the starfield appears
+    // infinitely far away regardless of camera position (skybox technique).
+    glm::mat4 viewRotOnly = glm::mat4(glm::mat3(camera.getViewMatrix()));
+    m_starfieldShader->setMat4("view", viewRotOnly);
+    m_starfieldShader->setMat4("projection", camera.getProjectionMatrix());
+    
+    // Pass time for twinkling animation (uses wall clock for frame-rate independent animation)
+    float starfieldTime = static_cast<float>(glfwGetTime());
+    m_starfieldShader->setFloat("time", starfieldTime);
+    
+    glBindVertexArray(m_starfieldVAO);
+    glDrawArrays(GL_POINTS, 0, m_starCount);
+    glBindVertexArray(0);
+    
+    glDisable(GL_PROGRAM_POINT_SIZE);
+    // Re-enable depth writing
+    glDepthMask(GL_TRUE);
+}
+
+// === Entity Visual Management ===
+
+bool Renderer::createEntityVisual(const std::shared_ptr<Entity>& entity) {
+    if (!entity) {
+        std::cerr << "Cannot create visual for null entity" << std::endl;
+        return false;
+    }
+    
+    const std::string& entityId = entity->getId();
+    
+    // Check if visual already exists
+    if (m_entityVisuals.find(entityId) != m_entityVisuals.end()) {
+        std::cout << "Visual already exists for entity " << entityId << std::endl;
+        return true;
+    }
+    
+    std::cout << "Creating visual for entity: " << entityId << " (" << entity->getShipType() << ")" << std::endl;
+    
+    // Create entity visual
+    EntityVisual visual;
+    
+    // Create ship model using the modern modular generation pipeline
+    // which applies faction-specific designs, part assembly, and visual differentiation
+    visual.model = Model::createShipModelWithRacialDesign(entity->getShipType(), entity->getFaction());
+    if (!visual.model) {
+        std::cerr << "Failed to create ship model for " << entity->getShipType() << std::endl;
+        return false;
+    }
+    
+    // Set initial state
+    visual.position = entity->getPosition();
+    visual.rotation = glm::vec3(0.0f, entity->getRotation(), 0.0f);
+    visual.scale = 1.0f;
+    visual.shipType = entity->getShipType();
+    visual.faction = entity->getFaction();
+    
+    // Set health data
+    const auto& health = entity->getHealth();
+    visual.currentShield = health.currentShield;
+    visual.maxShield = health.maxShield;
+    visual.currentArmor = health.currentArmor;
+    visual.maxArmor = health.maxArmor;
+    visual.currentHull = health.currentHull;
+    visual.maxHull = health.maxHull;
+    
+    // Store visual
+    m_entityVisuals[entityId] = std::move(visual);
+    
+    std::cout << "Visual created for entity " << entityId << std::endl;
+    return true;
+}
+
+void Renderer::removeEntityVisual(const std::string& entityId) {
+    auto it = m_entityVisuals.find(entityId);
+    if (it != m_entityVisuals.end()) {
+        std::cout << "Removing visual for entity: " << entityId << std::endl;
+        m_entityVisuals.erase(it);
+    }
+}
+
+void Renderer::updateEntityVisuals(const std::unordered_map<std::string, std::shared_ptr<Entity>>& entities) {
+    // Update existing entity visuals
+    for (auto& [entityId, visual] : m_entityVisuals) {
+        auto entityIt = entities.find(entityId);
+        if (entityIt != entities.end()) {
+            const auto& entity = entityIt->second;
+            
+            // Update position and rotation
+            visual.position = entity->getPosition();
+            visual.rotation = glm::vec3(0.0f, entity->getRotation(), 0.0f);
+            
+            // Update health data
+            const auto& health = entity->getHealth();
+            visual.currentShield = health.currentShield;
+            visual.maxShield = health.maxShield;
+            visual.currentArmor = health.currentArmor;
+            visual.maxArmor = health.maxArmor;
+            visual.currentHull = health.currentHull;
+            visual.maxHull = health.maxHull;
+        }
+    }
+}
+
+void Renderer::renderEntities(Camera& camera) {
+    if (!m_entityShader) return;
+    
+    m_entityShader->use();
+    m_entityShader->setMat4("view", camera.getViewMatrix());
+    m_entityShader->setMat4("projection", camera.getProjectionMatrix());
+    
+    // Simple directional light
+    m_entityShader->setVec3("lightDir", glm::normalize(glm::vec3(-0.5f, -1.0f, -0.3f)));
+    m_entityShader->setVec3("lightColor", glm::vec3(1.0f, 0.95f, 0.9f));
+    m_entityShader->setVec3("viewPos", camera.getPosition());
+    
+    // Render each entity
+    for (const auto& [entityId, visual] : m_entityVisuals) {
+        if (!visual.model) continue;
+        
+        // Create model matrix
+        glm::mat4 model = glm::mat4(1.0f);
+        model = glm::translate(model, visual.position);
+        model = glm::rotate(model, visual.rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::rotate(model, visual.rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
+        model = glm::rotate(model, visual.rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
+        model = glm::scale(model, glm::vec3(visual.scale));
+        
+        m_entityShader->setMat4("model", model);
+        
+        // Draw model
+        visual.model->draw();
+    }
+}
+
+void Renderer::renderHealthBars(Camera& camera) {
+    if (!m_healthBarRenderer) return;
+    
+    m_healthBarRenderer->begin(camera.getViewMatrix(), camera.getProjectionMatrix());
+    
+    // Render health bar for each entity
+    for (const auto& [entityId, visual] : m_entityVisuals) {
+        // Calculate shield/armor/hull percentages
+        float shieldPct = (visual.maxShield > 0.0f) ? (visual.currentShield / visual.maxShield) : 0.0f;
+        float armorPct = (visual.maxArmor > 0.0f) ? (visual.currentArmor / visual.maxArmor) : 0.0f;
+        float hullPct = (visual.maxHull > 0.0f) ? (visual.currentHull / visual.maxHull) : 1.0f;
+        
+        m_healthBarRenderer->drawHealthBar(
+            visual.position,
+            shieldPct, armorPct, hullPct,
+            visual.maxShield, visual.maxArmor, visual.maxHull
+        );
+    }
+    
+    m_healthBarRenderer->end();
+}
+
+void Renderer::setSunState(const glm::vec3& position, const glm::vec3& color, float radius) {
+    m_sunEnabled = true;
+    m_sunPosition = position;
+    m_sunColor = color;
+    m_sunRadius = radius;
+}
+
+void Renderer::disableSun() {
+    m_sunEnabled = false;
+}
+
+void Renderer::setupSunMesh() {
+    // Generate a UV sphere for the sun
+    const int stacks = 16;
+    const int slices = 24;
+    
+    std::vector<float> vertices;
+    std::vector<unsigned int> indices;
+    
+    // Generate vertices
+    for (int i = 0; i <= stacks; ++i) {
+        float phi = static_cast<float>(M_PI) * static_cast<float>(i) / stacks;
+        for (int j = 0; j <= slices; ++j) {
+            float theta = 2.0f * static_cast<float>(M_PI) * static_cast<float>(j) / slices;
+            
+            float x = std::sin(phi) * std::cos(theta);
+            float y = std::cos(phi);
+            float z = std::sin(phi) * std::sin(theta);
+            
+            // Position (unit sphere — scaled in render)
+            vertices.push_back(x);
+            vertices.push_back(y);
+            vertices.push_back(z);
+            // Normal (same as position for unit sphere)
+            vertices.push_back(x);
+            vertices.push_back(y);
+            vertices.push_back(z);
+        }
+    }
+    
+    // Generate indices
+    for (int i = 0; i < stacks; ++i) {
+        for (int j = 0; j < slices; ++j) {
+            unsigned int first = static_cast<unsigned int>(i * (slices + 1) + j);
+            unsigned int second = first + static_cast<unsigned int>(slices + 1);
+            
+            indices.push_back(first);
+            indices.push_back(second);
+            indices.push_back(first + 1);
+            
+            indices.push_back(second);
+            indices.push_back(second + 1);
+            indices.push_back(first + 1);
+        }
+    }
+    
+    m_sunIndexCount = static_cast<int>(indices.size());
+    
+    glGenVertexArrays(1, &m_sunVAO);
+    glGenBuffers(1, &m_sunVBO);
+    glGenBuffers(1, &m_sunEBO);
+    
+    glBindVertexArray(m_sunVAO);
+    
+    glBindBuffer(GL_ARRAY_BUFFER, m_sunVBO);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
+    
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_sunEBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), indices.data(), GL_STATIC_DRAW);
+    
+    // Position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    
+    // Normal attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+    
+    glBindVertexArray(0);
+    
+    std::cout << "Sun mesh setup complete (" << m_sunIndexCount / 3 << " triangles)" << std::endl;
+}
+
+void Renderer::renderSun(Camera& camera, const glm::vec3& sunPosition,
+                          const glm::vec3& sunColor, float sunRadius) {
+    if (m_sunVAO == 0 || !m_entityShader) return;
+    
+    m_entityShader->use();
+    m_entityShader->setMat4("view", camera.getViewMatrix());
+    m_entityShader->setMat4("projection", camera.getProjectionMatrix());
+    
+    // Sun is self-illuminating — set light to point from the camera so the
+    // entire visible surface is bright (emissive look)
+    glm::vec3 toCam = glm::normalize(camera.getPosition() - sunPosition);
+    m_entityShader->setVec3("lightDir", toCam);
+    m_entityShader->setVec3("lightColor", sunColor * 1.5f);
+    m_entityShader->setVec3("viewPos", camera.getPosition());
+    
+    // Enforce a minimum apparent size so the sun is always visible as a
+    // bright point from anywhere in the solar system, matching Astralis's
+    // behaviour where the star is always a visible glow in the skybox.
+    float dist = glm::length(camera.getPosition() - sunPosition);
+    float minApparentRadius = dist * 0.004f;  // ~0.4% of distance = always visible
+    float renderRadius = std::max(sunRadius, minApparentRadius);
+    
+    // Create model matrix: translate to sun position, scale by radius
+    glm::mat4 model = glm::mat4(1.0f);
+    model = glm::translate(model, sunPosition);
+    model = glm::scale(model, glm::vec3(renderRadius));
+    m_entityShader->setMat4("model", model);
+    
+    // Draw the sun sphere with additive blending for glow
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+    
+    glBindVertexArray(m_sunVAO);
+    glDrawElements(GL_TRIANGLES, m_sunIndexCount, GL_UNSIGNED_INT, 0);
+    glBindVertexArray(0);
+    
+    // Restore normal blending
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+}
+
+void Renderer::updateWarpEffect(int phase, float progress, float intensity,
+                                 const glm::vec3& direction, float deltaTime) {
+    if (m_warpEffectRenderer) {
+        m_warpEffectRenderer->update(deltaTime, phase, progress, intensity, direction);
+    }
+}
+
+void Renderer::setCelestials(const std::vector<CelestialRenderData>& celestials) {
+    m_celestialRenderData = celestials;
+}
+
+void Renderer::setEngineTrailState(bool emitting, float intensity,
+                                    const glm::vec3& position, const glm::vec3& velocity) {
+    m_engineTrailEmitting = emitting;
+    m_engineTrailIntensity = intensity;
+    m_engineTrailPos = position;
+    m_engineTrailVelocity = velocity;
+}
+
+void Renderer::renderCelestials(Camera& camera) {
+    if (m_sunVAO == 0 || !m_entityShader || m_celestialRenderData.empty()) return;
+
+    // Minimum apparent size: ensures distant celestials remain visible as
+    // a small disc regardless of actual radius, matching Astralis behaviour.
+    static constexpr float MIN_APPARENT_SIZE_FACTOR = 0.003f;
+    // Brightness boost applied to each celestial's colour so the lit sphere
+    // stands out against the dark space background.
+    static constexpr float CELESTIAL_COLOR_BRIGHTNESS = 1.2f;
+
+    m_entityShader->use();
+    m_entityShader->setMat4("view", camera.getViewMatrix());
+    m_entityShader->setMat4("projection", camera.getProjectionMatrix());
+
+    // Light direction from the sun toward celestials
+    glm::vec3 sunDir = m_sunEnabled
+        ? glm::normalize(-m_sunPosition)
+        : glm::normalize(glm::vec3(-0.5f, -1.0f, -0.3f));
+    m_entityShader->setVec3("lightDir", sunDir);
+    m_entityShader->setVec3("lightColor", glm::vec3(1.0f, 0.95f, 0.9f));
+    m_entityShader->setVec3("viewPos", camera.getPosition());
+
+    glEnable(GL_DEPTH_TEST);
+
+    for (const auto& cel : m_celestialRenderData) {
+        float dist = glm::length(camera.getPosition() - cel.position);
+        float minApparentRadius = dist * MIN_APPARENT_SIZE_FACTOR;
+        float renderRadius = std::max(cel.radius, minApparentRadius);
+
+        glm::mat4 model = glm::mat4(1.0f);
+        model = glm::translate(model, cel.position);
+        model = glm::scale(model, glm::vec3(renderRadius));
+        m_entityShader->setMat4("model", model);
+
+        // Override light color with the celestial's own color tint so
+        // the sphere appears coloured without requiring a separate shader.
+        m_entityShader->setVec3("lightColor", cel.color * CELESTIAL_COLOR_BRIGHTNESS);
+
+        glBindVertexArray(m_sunVAO);
+        glDrawElements(GL_TRIANGLES, m_sunIndexCount, GL_UNSIGNED_INT, 0);
+        glBindVertexArray(0);
+    }
+
+    // Restore default light color
+    m_entityShader->setVec3("lightColor", glm::vec3(1.0f, 0.95f, 0.9f));
+}
+
+void Renderer::renderWarpEffect() {
+    if (m_warpEffectRenderer) {
+        m_warpEffectRenderer->render();
+    }
+}
+
+// ── Hangar environment ──────────────────────────────────────────────
+
+void Renderer::setupHangar() {
+    // Procedural hangar: a large rectangular room with floor, ceiling, walls,
+    // and a raised landing pad in the center.
+    //
+    // Coordinate system: Y-up, the floor is at Y=0, eye level ~1.8m.
+    // Hangar dimensions: 80m wide (X), 60m deep (Z), 20m tall (Y).
+    //
+    // Vertex layout: position (3f) + normal (3f) + colour (3f) = 9 floats.
+    // The colour is provided at attribute location 3 so the entity shader
+    // (which reads aColor at location 3) renders surfaces with proper colour
+    // instead of defaulting to vec3(0,0,0) = black.
+
+    const float W = 40.0f;    // half-width  (X: -40 to +40)
+    const float D = 30.0f;    // half-depth  (Z: -30 to +30)
+    const float H = 20.0f;    // ceiling height
+    const float padW = 12.0f; // landing pad half-width
+    const float padD = 15.0f; // landing pad half-depth
+    const float padH = 0.3f;  // pad elevation
+
+    // Helper: emit two triangles for a coloured quad (6 vertices, 9 floats each)
+    std::vector<float> verts;
+    auto quad = [&](glm::vec3 a, glm::vec3 b, glm::vec3 c, glm::vec3 d,
+                    glm::vec3 n, glm::vec3 col) {
+        auto emit = [&](const glm::vec3& p) {
+            verts.insert(verts.end(), {p.x, p.y, p.z,
+                                       n.x, n.y, n.z,
+                                       col.x, col.y, col.z});
+        };
+        // Triangle 1: a-b-c
+        emit(a); emit(b); emit(c);
+        // Triangle 2: a-c-d
+        emit(a); emit(c); emit(d);
+    };
+
+    // Floor (Y=0, normal up)
+    quad({-W,0,-D}, {W,0,-D}, {W,0,D}, {-W,0,D}, {0,1,0}, HANGAR_COL_FLOOR);
+
+    // Ceiling (Y=H, normal down)
+    quad({-W,H,D}, {W,H,D}, {W,H,-D}, {-W,H,-D}, {0,-1,0}, HANGAR_COL_CEILING);
+
+    // Back wall (Z=-D, normal +Z)
+    quad({-W,0,-D}, {-W,H,-D}, {W,H,-D}, {W,0,-D}, {0,0,1}, HANGAR_COL_WALL);
+
+    // Front wall (Z=+D, normal -Z) — hangar door side, half-height opening
+    float doorH = 12.0f;
+    float doorW = 20.0f;
+    // Left section
+    quad({-W,0,D}, {-W,H,D}, {-doorW/2,H,D}, {-doorW/2,0,D}, {0,0,-1}, HANGAR_COL_WALL);
+    // Right section
+    quad({doorW/2,0,D}, {doorW/2,H,D}, {W,H,D}, {W,0,D}, {0,0,-1}, HANGAR_COL_WALL);
+    // Top section (above door)
+    quad({-doorW/2,doorH,D}, {-doorW/2,H,D}, {doorW/2,H,D}, {doorW/2,doorH,D}, {0,0,-1}, HANGAR_COL_WALL);
+
+    // Left wall (X=-W, normal +X)
+    quad({-W,0,D}, {-W,0,-D}, {-W,H,-D}, {-W,H,D}, {1,0,0}, HANGAR_COL_WALL);
+
+    // Right wall (X=+W, normal -X)
+    quad({W,0,-D}, {W,0,D}, {W,H,D}, {W,H,-D}, {-1,0,0}, HANGAR_COL_WALL);
+
+    // Landing pad — raised platform in center (top surface, normal up)
+    quad({-padW,padH,-padD}, {padW,padH,-padD}, {padW,padH,padD}, {-padW,padH,padD}, {0,1,0}, HANGAR_COL_PAD_TOP);
+    // Pad front edge
+    quad({-padW,0,padD}, {padW,0,padD}, {padW,padH,padD}, {-padW,padH,padD}, {0,0,1}, HANGAR_COL_PAD_EDG);
+    // Pad back edge
+    quad({padW,0,-padD}, {-padW,0,-padD}, {-padW,padH,-padD}, {padW,padH,-padD}, {0,0,-1}, HANGAR_COL_PAD_EDG);
+    // Pad left edge
+    quad({-padW,0,-padD}, {-padW,0,padD}, {-padW,padH,padD}, {-padW,padH,-padD}, {1,0,0}, HANGAR_COL_PAD_EDG);
+    // Pad right edge
+    quad({padW,0,padD}, {padW,0,-padD}, {padW,padH,-padD}, {padW,padH,padD}, {-1,0,0}, HANGAR_COL_PAD_EDG);
+
+    // Catwalk rails along the walls (thin raised strips at waist height)
+    float railH = 1.1f;
+    float railW = 1.5f;
+    // Left catwalk
+    quad({-W,0,-D}, {-W+railW,0,-D}, {-W+railW,0,D}, {-W,0,D}, {0,1,0}, HANGAR_COL_CATWALK);
+    quad({-W,railH,-D}, {-W+railW,railH,-D}, {-W+railW,railH,D}, {-W,railH,D}, {0,1,0}, HANGAR_COL_CATWALK);
+    // Right catwalk
+    quad({W-railW,0,-D}, {W,0,-D}, {W,0,D}, {W-railW,0,D}, {0,1,0}, HANGAR_COL_CATWALK);
+    quad({W-railW,railH,-D}, {W,railH,-D}, {W,railH,D}, {W-railW,railH,D}, {0,1,0}, HANGAR_COL_CATWALK);
+
+    // Each vertex is now 9 floats (pos + normal + colour)
+    m_hangarVertexCount = static_cast<int>(verts.size()) / 9;
+
+    glGenVertexArrays(1, &m_hangarVAO);
+    glGenBuffers(1, &m_hangarVBO);
+    glBindVertexArray(m_hangarVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, m_hangarVBO);
+    glBufferData(GL_ARRAY_BUFFER,
+                 static_cast<GLsizeiptr>(verts.size() * sizeof(float)),
+                 verts.data(), GL_STATIC_DRAW);
+    // Position: attribute location 0
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // Normal: attribute location 1
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float),
+                          (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+    // TexCoord (location 2) — not used for hangar, leave disabled (defaults to 0,0)
+    // Colour: attribute location 3 (matches entity shader aColor)
+    glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float),
+                          (void*)(6 * sizeof(float)));
+    glEnableVertexAttribArray(3);
+    glBindVertexArray(0);
+
+    std::cout << "  Hangar environment: " << m_hangarVertexCount << " vertices" << std::endl;
+}
+
+void Renderer::renderHangar(Camera& camera) {
+    if (m_hangarVAO == 0 || !m_entityShader) return;
+
+    m_entityShader->use();
+    m_entityShader->setMat4("view", camera.getViewMatrix());
+    m_entityShader->setMat4("projection", camera.getProjectionMatrix());
+
+    // Warm hangar lighting: overhead industrial lights
+    m_entityShader->setVec3("lightDir", glm::normalize(glm::vec3(0.2f, -1.0f, 0.1f)));
+    m_entityShader->setVec3("lightColor", glm::vec3(0.9f, 0.85f, 0.75f));
+    m_entityShader->setVec3("viewPos", camera.getPosition());
+
+    // Hangar uses identity model matrix (world-space geometry)
+    glm::mat4 model = glm::mat4(1.0f);
+    m_entityShader->setMat4("model", model);
+
+    glBindVertexArray(m_hangarVAO);
+    glDrawArrays(GL_TRIANGLES, 0, m_hangarVertexCount);
+    glBindVertexArray(0);
+}
+
+} // namespace atlas

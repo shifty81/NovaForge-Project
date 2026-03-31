@@ -1,0 +1,10 @@
+[DataRegistry] Initialize Root=Data
+[DataRegistry] Loaded module reactor_mk1
+[DataRegistry] Loaded item steel_plate
+[DataRegistry] Loaded item copper_wire
+[DataRegistry] Loaded item micro_core
+[DataRegistry] Loaded recipe craft_reactor_mk1
+[DataRegistry] Loaded mission mission_salvage_derelict_001
+[DataRegistry] Loaded faction frontier_union
+[DataRegistry] Loaded loot loot_derelict_engineering_room
+[DataRegistry] Summary Modules=1 Items=3 Recipes=1 Missions=1 Factions=1 Loot=1

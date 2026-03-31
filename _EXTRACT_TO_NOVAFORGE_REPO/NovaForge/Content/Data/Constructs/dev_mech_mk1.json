@@ -1,0 +1,10 @@
+{
+  "id": "dev_mech_mk1",
+  "constructClass": "mech",
+  "displayName": "Dev Mech Mk1",
+  "entryPoints": ["cockpit_main"],
+  "cameraProfile": "mech_default",
+  "inputProfile": "mech_default",
+  "moduleRefs": ["mech_power_core", "mech_utility_mount_a"],
+  "cargoContainerRef": "mech_storage_dev"
+}

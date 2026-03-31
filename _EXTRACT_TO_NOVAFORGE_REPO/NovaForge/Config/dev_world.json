@@ -1,0 +1,11 @@
+{
+  "defaultProfile": "dev_local",
+  "starterLoadout": "starter_dev_loadout",
+  "defaultMission": "mission_dev_salvage_intro",
+  "enableDebugPanels": true,
+  "enableCheckpointResets": true,
+  "constructs": {
+    "starterShip": "starter_ship_dev",
+    "starterMech": "mech_utility_dev"
+  }
+}

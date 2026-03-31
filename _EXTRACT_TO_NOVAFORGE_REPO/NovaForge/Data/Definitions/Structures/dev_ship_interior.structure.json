@@ -1,0 +1,18 @@
+{
+  "id": "dev_ship_interior",
+  "name": "Dev Ship Interior",
+  "rooms": [
+    {
+      "id": "room_main",
+      "oxygen": true,
+      "gravity": true,
+      "pressurized": true
+    }
+  ],
+  "modules": [
+    { "id": "door_airlock_inner", "type": "door" },
+    { "id": "container_utility_01", "type": "container" },
+    { "id": "reactor_panel_01", "type": "reactor_panel" },
+    { "id": "airlock_01", "type": "airlock" }
+  ]
+}

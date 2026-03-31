@@ -1,0 +1,5 @@
+{
+  "salvage_density": 0.7,
+  "damage_variation": true,
+  "module_variants": ["industrial", "military", "civilian"]
+}

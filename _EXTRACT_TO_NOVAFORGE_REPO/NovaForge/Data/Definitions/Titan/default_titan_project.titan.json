@@ -1,0 +1,10 @@
+{
+  "id": "titan_project_alpha",
+  "display_name": "Titan Project Alpha",
+  "requirements": [
+    { "resource_id": "steel_plate", "required_amount": 5000 },
+    { "resource_id": "micro_core", "required_amount": 500 },
+    { "resource_id": "iron_ore", "required_amount": 10000 },
+    { "resource_id": "copper_ore", "required_amount": 8000 }
+  ]
+}

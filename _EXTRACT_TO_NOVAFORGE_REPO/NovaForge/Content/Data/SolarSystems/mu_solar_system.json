@@ -1,0 +1,91 @@
+{
+  "id": "mu_solar_system_001",
+  "name": "Mu Solaris Expanse",
+  "version": "1.0",
+  "star": {
+    "type": "F5V",
+    "radius": 1600000,
+    "luminosity": 35.0,
+    "temperature": 6400
+  },
+  "total_celestials": 8,
+  "celestials": [
+    {
+      "id": "solaris_planet_001",
+      "name": "Solaris Cinder",
+      "type": "Planet",
+      "orbit_au": 4.0,
+      "radius_km": 4100,
+      "atmosphere": "carbon_dioxide_sulfur",
+      "habitable": false,
+      "pcg_seed": 1200
+    },
+    {
+      "id": "solaris_planet_002",
+      "name": "Solaris Haven",
+      "type": "Planet",
+      "orbit_au": 11.0,
+      "radius_km": 6800,
+      "atmosphere": "nitrogen_oxygen",
+      "habitable": true,
+      "pcg_seed": 1201
+    },
+    {
+      "id": "solaris_moon_001",
+      "name": "Solaris Crescent",
+      "type": "Moon",
+      "orbit_au": 11.02,
+      "radius_km": 1600,
+      "parent": "solaris_planet_002",
+      "pcg_seed": 1202
+    },
+    {
+      "id": "solaris_ice_001",
+      "name": "Solaris Frost",
+      "type": "IcePlanet",
+      "orbit_au": 20.0,
+      "radius_km": 5200,
+      "atmosphere": "methane_nitrogen",
+      "pcg_seed": 1203
+    },
+    {
+      "id": "solaris_gasgiant_001",
+      "name": "Solaris Colossus",
+      "type": "GasGiant",
+      "orbit_au": 35.0,
+      "radius_km": 80000,
+      "atmosphere": "hydrogen_helium_ammonia",
+      "pcg_seed": 1204
+    },
+    {
+      "id": "solaris_belt_001",
+      "name": "Solaris Rubble Ring",
+      "type": "AsteroidBelt",
+      "orbit_au": 52.0,
+      "ore_types": ["veldspar", "omber", "kernite", "jaspet"]
+    },
+    {
+      "id": "solaris_station_001",
+      "name": "Solaris Anchor Post",
+      "type": "Station",
+      "orbit_au": 25.0,
+      "faction": "solar_guilds"
+    },
+    {
+      "id": "solaris_wormhole_001",
+      "name": "Solaris Rift",
+      "type": "Wormhole",
+      "orbit_au": 90.0,
+      "hazard_level": "extreme"
+    }
+  ],
+  "npc_factions": ["solar_guilds", "mu_reavers"],
+  "pcg_config": {
+    "seed": 1200,
+    "density": 0.6,
+    "hazard_level": "medium",
+    "resource_richness": "rich",
+    "encounter_rate": "high"
+  },
+  "hazards": ["radiation_belt"]
+}

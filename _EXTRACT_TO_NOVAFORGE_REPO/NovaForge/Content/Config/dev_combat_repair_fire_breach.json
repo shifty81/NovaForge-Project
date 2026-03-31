@@ -1,0 +1,11 @@
+{
+  "devWorldProfile": "combat_repair_fire_breach",
+  "defaultDamageProfile": "kinetic_slug_mk1",
+  "defaultRepairActions": [
+    "emergency_breach_patch",
+    "portable_fire_suppress",
+    "field_hull_restore"
+  ],
+  "defaultTargetConstruct": "dev_damage_hull_segment",
+  "enableDebugPanels": true
+}

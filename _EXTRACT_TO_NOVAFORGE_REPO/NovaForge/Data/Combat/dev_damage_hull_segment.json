@@ -1,0 +1,12 @@
+{
+  "id": "dev_damage_hull_segment",
+  "constructClass": "ship_segment",
+  "zones": [
+    "hull_plate_a",
+    "inner_module_a",
+    "service_line_a"
+  ],
+  "supportsBreach": true,
+  "supportsFire": true,
+  "supportsRepair": true
+}

@@ -1,0 +1,30 @@
+{
+  "constructId": "dev_builder_salvage_construct",
+  "constructClass": "ship",
+  "displayName": "Dev Builder Salvage Construct",
+  "rootTransform": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "parts": [
+    {
+      "placementId": "part_001",
+      "partId": "hull_plate_mk1_a",
+      "state": "welded",
+      "gridPosition": [0, 0, 0],
+      "rotation": 0,
+      "durability": 250.0
+    },
+    {
+      "placementId": "part_002",
+      "partId": "hull_plate_mk1_a",
+      "state": "welded",
+      "gridPosition": [1, 0, 0],
+      "rotation": 0,
+      "durability": 250.0
+    }
+  ],
+  "modules": [],
+  "attachments": []
+}

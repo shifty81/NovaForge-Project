@@ -1,0 +1,5 @@
+{
+  "asteroid_density": 1.2,
+  "resource_distribution": ["iron", "copper", "rare"],
+  "cluster_variation": true
+}

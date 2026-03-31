@@ -1,0 +1,6 @@
+{
+  "sectors": [
+    { "id": "sector_home", "faction": "frontier_union", "threat": 1 },
+    { "id": "sector_outer", "faction": "deep_core_extractors", "threat": 3 }
+  ]
+}

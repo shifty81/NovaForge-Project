@@ -1,0 +1,8 @@
+{
+  "build_target": "AtlasEditorRuntime",
+  "data_root": "Data",
+  "save_root": "Saves",
+  "default_mode": "vertical_slice",
+  "editor_enabled": true,
+  "runtime_ui_enabled": true
+}

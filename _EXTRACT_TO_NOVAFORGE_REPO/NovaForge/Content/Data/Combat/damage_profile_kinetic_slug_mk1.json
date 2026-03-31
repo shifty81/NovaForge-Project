@@ -1,0 +1,12 @@
+{
+  "id": "kinetic_slug_mk1",
+  "damageType": "kinetic",
+  "baseDamage": 45.0,
+  "penetration": 20.0,
+  "structureMultiplier": 1.1,
+  "moduleMultiplier": 0.8,
+  "statusChances": {
+    "breach_minor": 0.35,
+    "fire_ignition": 0.05
+  }
+}

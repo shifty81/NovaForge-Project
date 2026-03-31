@@ -1,0 +1,15 @@
+{
+  "id": "player_character_001",
+  "display_name": "Player Character",
+  "style": "low_poly_modular",
+  "movement_modes": ["fps", "eva", "mech"],
+  "parts": [
+    { "id": "head_base", "type": "head", "mesh": "mesh_head_lowpoly" },
+    { "id": "torso_base", "type": "torso", "mesh": "mesh_torso_lowpoly" },
+    { "id": "backpack_base", "type": "backpack", "mesh": "mesh_backpack_lowpoly" }
+  ],
+  "sockets": [
+    { "id": "socket_hand_r", "bone": "hand_r", "category": "tool" },
+    { "id": "socket_helmet", "bone": "head", "category": "helmet" }
+  ]
+}

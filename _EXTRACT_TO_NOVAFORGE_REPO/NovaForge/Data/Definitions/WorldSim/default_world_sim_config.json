@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "sectors": [
+    {
+      "sector_id": "sector_alpha",
+      "name": "Alpha Expanse",
+      "control": "FactionA",
+      "controlling_faction": 1,
+      "danger_level": 0.2,
+      "opportunity_level": 1.2,
+      "war_active": false,
+      "security": "high_sec"
+    },
+    {
+      "sector_id": "sector_beta",
+      "name": "Beta Contested Zone",
+      "control": "Contested",
+      "controlling_faction": 0,
+      "danger_level": 0.6,
+      "opportunity_level": 1.8,
+      "war_active": true,
+      "security": "low_sec"
+    },
+    {
+      "sector_id": "sector_gamma",
+      "name": "Gamma Nullspace",
+      "control": "Unclaimed",
+      "controlling_faction": 0,
+      "danger_level": 0.85,
+      "opportunity_level": 2.0,
+      "war_active": false,
+      "security": "null_sec"
+    }
+  ],
+  "titan_race": {
+    "initial_phase": 1,
+    "phase_thresholds": [0.0, 0.25, 0.5, 0.75, 0.9],
+    "global_pressure_per_phase": [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+  },
+  "anomaly_types": [
+    { "type": "ResourceBurst",    "opportunity_bonus": 0.3, "danger_bonus": 0.0 },
+    { "type": "RiftEvent",        "opportunity_bonus": 0.5, "danger_bonus": 0.2 },
+    { "type": "PirateIncursion",  "opportunity_bonus": 0.1, "danger_bonus": 0.4 },
+    { "type": "TitanFragment",    "opportunity_bonus": 0.8, "danger_bonus": 0.3 }
+  ]
+}

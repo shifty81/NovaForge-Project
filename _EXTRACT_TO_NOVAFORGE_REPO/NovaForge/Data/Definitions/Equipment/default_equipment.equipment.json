@@ -1,0 +1,18 @@
+{
+  "equipment": [
+    {
+      "id": "helmet_basic",
+      "category": "helmet",
+      "mesh": "mesh_helmet_basic",
+      "socket": "socket_helmet",
+      "upgrade_tag": "helmet_tier1"
+    },
+    {
+      "id": "mining_tool_basic",
+      "category": "tool",
+      "mesh": "mesh_tool_miner",
+      "socket": "socket_hand_r",
+      "upgrade_tag": "tool_tier1"
+    }
+  ]
+}

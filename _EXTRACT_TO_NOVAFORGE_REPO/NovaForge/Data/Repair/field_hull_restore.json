@@ -1,0 +1,13 @@
+{
+  "id": "field_hull_restore",
+  "toolRequired": "welder",
+  "materialsRequired": [
+    "hull_patch_plate",
+    "wiring_bundle"
+  ],
+  "timeSec": 6.0,
+  "restores": {
+    "integrity": 25.0,
+    "durability": 20.0
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "starting_credits": 5000,
+  "owned_assets": [
+    { "asset_id": "ship_player_001", "asset_type": "ship" },
+    { "asset_id": "ship_hauler_001", "asset_type": "ship" }
+  ]
+}

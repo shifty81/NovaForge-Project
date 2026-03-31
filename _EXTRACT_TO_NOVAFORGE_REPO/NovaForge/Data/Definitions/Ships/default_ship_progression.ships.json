@@ -1,0 +1,29 @@
+{
+  "ships": [
+    {
+      "id": "ship_player_001",
+      "display_name": "Prospector",
+      "role": "starter_salvage",
+      "hull_tier": 1,
+      "utility_tier": 1,
+      "cargo_tier": 1,
+      "upgrade_slots": [
+        { "slot_id": "utility_a", "category": "utility", "tier": 1 },
+        { "slot_id": "cargo_a", "category": "cargo", "tier": 1 },
+        { "slot_id": "reactor_a", "category": "power", "tier": 1 }
+      ]
+    },
+    {
+      "id": "ship_hauler_001",
+      "display_name": "Mule",
+      "role": "hauler",
+      "hull_tier": 1,
+      "utility_tier": 1,
+      "cargo_tier": 2,
+      "upgrade_slots": [
+        { "slot_id": "cargo_a", "category": "cargo", "tier": 2 },
+        { "slot_id": "cargo_b", "category": "cargo", "tier": 2 }
+      ]
+    }
+  ]
+}

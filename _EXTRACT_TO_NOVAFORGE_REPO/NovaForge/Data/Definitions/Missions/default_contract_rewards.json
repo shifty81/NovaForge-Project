@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "reward_tiers": [
+    {
+      "tier": "basic",
+      "credits_base": 500.0,
+      "faction_standing_delta": 2.0,
+      "skill_xp": 100.0,
+      "skill_id": "piloting",
+      "unlocks_tags": []
+    },
+    {
+      "tier": "standard",
+      "credits_base": 2000.0,
+      "faction_standing_delta": 5.0,
+      "skill_xp": 250.0,
+      "skill_id": "piloting",
+      "unlocks_tags": ["tier_standard"]
+    },
+    {
+      "tier": "advanced",
+      "credits_base": 8000.0,
+      "faction_standing_delta": 12.0,
+      "skill_xp": 750.0,
+      "skill_id": "combat",
+      "unlocks_tags": ["tier_advanced", "faction_elite_missions"]
+    },
+    {
+      "tier": "elite",
+      "credits_base": 25000.0,
+      "faction_standing_delta": 25.0,
+      "skill_xp": 2000.0,
+      "skill_id": "combat",
+      "unlocks_tags": ["tier_elite", "titan_arc_access"]
+    }
+  ],
+  "standing_gates": [
+    { "tag": "tier_standard",         "required_standing": 10.0  },
+    { "tag": "tier_advanced",         "required_standing": 30.0  },
+    { "tag": "tier_elite",            "required_standing": 60.0  },
+    { "tag": "faction_elite_missions","required_standing": 50.0  },
+    { "tag": "titan_arc_access",      "required_standing": 80.0  }
+  ]
+}

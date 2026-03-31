@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "stations": [
+    {
+      "station_id": "station_alpha_prime",
+      "display_name": "Alpha Prime Trading Post",
+      "faction_id": "federation",
+      "services": ["repair", "resupply", "trading", "mission_board"],
+      "storage_capacity": 2000.0,
+      "repair_cost_multiplier": 1.0,
+      "resupply_cost_multiplier": 1.0
+    },
+    {
+      "station_id": "station_deep_reach",
+      "display_name": "Deep Reach Outpost",
+      "faction_id": "independent",
+      "services": ["repair", "trading", "manufacturing"],
+      "storage_capacity": 1000.0,
+      "repair_cost_multiplier": 1.25,
+      "resupply_cost_multiplier": 1.5
+    }
+  ],
+  "manufacturing_recipes": [
+    {
+      "recipe_id": "recipe_hull_plating",
+      "output_item_id": "hull_plating",
+      "output_quantity": 1,
+      "duration_seconds": 30.0,
+      "ingredients": [
+        { "item_id": "scrap_metal",   "quantity": 10 },
+        { "item_id": "refined_alloy", "quantity": 2 }
+      ]
+    },
+    {
+      "recipe_id": "recipe_capacitor_cell",
+      "output_item_id": "capacitor_cell",
+      "output_quantity": 2,
+      "duration_seconds": 20.0,
+      "ingredients": [
+        { "item_id": "power_conduit", "quantity": 3 }
+      ]
+    },
+    {
+      "recipe_id": "recipe_cargo_container",
+      "output_item_id": "cargo_container",
+      "output_quantity": 1,
+      "duration_seconds": 60.0,
+      "ingredients": [
+        { "item_id": "structural_beam", "quantity": 5 },
+        { "item_id": "scrap_metal",     "quantity": 15 }
+      ]
+    }
+  ]
+}

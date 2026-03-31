@@ -1,0 +1,17 @@
+{
+  "id": "recovery_hull_plate_mk1_a",
+  "outputs": [
+    {
+      "itemId": "hull_plate_mk1_a_recovered",
+      "min": 1,
+      "max": 1,
+      "conditionFromPartState": true
+    },
+    {
+      "itemId": "scrap_metal",
+      "min": 0,
+      "max": 3,
+      "conditionFromPartState": false
+    }
+  ]
+}

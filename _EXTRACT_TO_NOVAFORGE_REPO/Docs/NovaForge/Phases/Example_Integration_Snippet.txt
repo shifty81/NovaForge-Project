@@ -1,0 +1,23 @@
+// Example World integration idea:
+//
+// #include "Gameplay/GameplayManager.h"
+//
+// std::unique_ptr<GameplayManager> Gameplay;
+//
+// bool World::Initialize(DataRegistry& InDataRegistry)
+// {
+//     ...
+//     Gameplay = std::make_unique<GameplayManager>();
+//     if (!Gameplay->Initialize(InDataRegistry))
+//     {
+//         return false;
+//     }
+//     Gameplay->RunDemoLoop();
+//     ...
+// }
+//
+// void World::Tick(float DeltaTime)
+// {
+//     Scheduler->Tick(DeltaTime, *this);
+//     Gameplay->Tick(DeltaTime);
+// }

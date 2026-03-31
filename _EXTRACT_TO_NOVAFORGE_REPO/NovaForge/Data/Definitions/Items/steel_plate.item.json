@@ -1,0 +1,10 @@
+{
+  "id": "steel_plate",
+  "name": "Steel Plate",
+  "category": "material",
+  "stack_size": 100,
+  "mass": 2.5,
+  "volume": 1.0,
+  "tags": ["crafting", "construction"],
+  "value": 15
+}

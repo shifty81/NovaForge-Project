@@ -1,0 +1,7 @@
+{
+  "factions": [
+    { "id": "frontier_union", "starting_reputation": 0, "starting_influence": 25 },
+    { "id": "deep_core_extractors", "starting_reputation": -5, "starting_influence": 35 },
+    { "id": "free_salvage_collective", "starting_reputation": 10, "starting_influence": 20 }
+  ]
+}

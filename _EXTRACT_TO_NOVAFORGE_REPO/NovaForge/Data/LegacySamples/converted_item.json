@@ -1,0 +1,7 @@
+{
+  "id": "steel_plate",
+  "name": "Steel Plate",
+  "category": "material",
+  "value": 15,
+  "stack_size": 100
+}

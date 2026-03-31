@@ -1,0 +1,79 @@
+{
+  "id": "epsilon_solar_system_001",
+  "name": "Epsilon Solar System Velar",
+  "version": "1.0",
+  "star": {
+    "type": "F-type",
+    "radius": 980000,
+    "luminosity": 3.7
+  },
+  "celestials": [
+    {
+      "id": "velar_planet_001",
+      "type": "Planet",
+      "name": "Velar Prime",
+      "orbit_radius": 1.0,
+      "radius": 6800,
+      "pcg_seed": 400,
+      "atmosphere": "nitrogen_oxygen"
+    },
+    {
+      "id": "velar_moon_001",
+      "type": "Moon",
+      "name": "Velar Shard",
+      "orbit_radius": 1.001,
+      "radius": 800,
+      "parent": "velar_planet_001",
+      "pcg_seed": 401
+    },
+    {
+      "id": "velar_station_001",
+      "type": "Station",
+      "name": "Velar Commerce Hub",
+      "orbit_radius": 1.5,
+      "faction": "merchant_alliance"
+    },
+    {
+      "id": "velar_asteroid_belt_001",
+      "type": "AsteroidBelt",
+      "name": "Velar Dust Ring",
+      "orbit_radius": 2.8,
+      "ore_types": ["zydrine", "megacyte", "morphite"]
+    },
+    {
+      "id": "velar_gas_giant_001",
+      "type": "GasGiant",
+      "name": "Velar Tempest",
+      "orbit_radius": 4.5,
+      "radius": 72000,
+      "pcg_seed": 402
+    },
+    {
+      "id": "velar_ice_world_001",
+      "type": "Planet",
+      "name": "Velar Frost",
+      "orbit_radius": 6.0,
+      "radius": 5200,
+      "pcg_seed": 403,
+      "atmosphere": "thin_co2"
+    },
+    {
+      "id": "velar_stargate_001",
+      "type": "Stargate",
+      "name": "Velar Gate Beta",
+      "orbit_radius": 8.0,
+      "destination_system": "delta_solar_system_001"
+    },
+    {
+      "id": "velar_ruin_001",
+      "type": "Anomaly",
+      "name": "Velar Ancient Ruins",
+      "orbit_radius": 3.2,
+      "anomaly_class": "A"
+    }
+  ],
+  "ship_spawn_points": 3,
+  "total_celestials": 8,
+  "npc_factions": ["merchant_alliance", "velar_explorers_guild"],
+  "pcg_config": "solar_system_pcg_config.json"
+}

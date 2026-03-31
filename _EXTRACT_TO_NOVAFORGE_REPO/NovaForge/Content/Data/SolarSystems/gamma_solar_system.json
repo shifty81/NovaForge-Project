@@ -1,0 +1,78 @@
+{
+  "id": "gamma_solar_system_001",
+  "name": "Gamma Solar System Vex",
+  "version": "1.0",
+  "star": {
+    "type": "M-type",
+    "radius": 380000,
+    "luminosity": 0.08
+  },
+  "celestials": [
+    {
+      "id": "vex_planet_001",
+      "type": "Planet",
+      "name": "Vex Hollow",
+      "orbit_radius": 0.4,
+      "radius": 3200,
+      "pcg_seed": 200,
+      "atmosphere": "toxic"
+    },
+    {
+      "id": "vex_moon_001",
+      "type": "Moon",
+      "name": "Vex Shard",
+      "orbit_radius": 0.402,
+      "radius": 800,
+      "parent": "vex_planet_001",
+      "pcg_seed": 201
+    },
+    {
+      "id": "vex_station_001",
+      "type": "Station",
+      "name": "Vex Bastion",
+      "orbit_radius": 0.6,
+      "faction": "outlaw_syndicate"
+    },
+    {
+      "id": "vex_asteroid_belt_001",
+      "type": "AsteroidBelt",
+      "name": "Vex Debris Field",
+      "orbit_radius": 1.2,
+      "ore_types": ["zydrine", "megacyte", "morphite"]
+    },
+    {
+      "id": "vex_wormhole_001",
+      "type": "Wormhole",
+      "name": "Vex Tear",
+      "orbit_radius": 1.8,
+      "destination": "beta_solar_system_001"
+    },
+    {
+      "id": "vex_anomaly_001",
+      "type": "Anomaly",
+      "name": "Vex Echo Site",
+      "orbit_radius": 0.9,
+      "anomaly_class": "C"
+    },
+    {
+      "id": "vex_planet_002",
+      "type": "Planet",
+      "name": "Vex Arid",
+      "orbit_radius": 0.7,
+      "radius": 2900,
+      "pcg_seed": 202,
+      "atmosphere": "none"
+    },
+    {
+      "id": "vex_stargate_001",
+      "type": "Stargate",
+      "name": "Vex Gate Omega",
+      "orbit_radius": 2.4,
+      "destination_system": "beta_solar_system_001"
+    }
+  ],
+  "ship_spawn_points": 1,
+  "total_celestials": 8,
+  "npc_factions": ["outlaw_syndicate", "vex_scavengers"],
+  "pcg_config": "solar_system_pcg_config.json"
+}

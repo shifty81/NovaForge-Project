@@ -1,0 +1,7 @@
+{
+  "tool_id": "mining_tool_basic",
+  "equip_animation": "anim_tool_equip_miner",
+  "use_animation": "anim_tool_mining_loop",
+  "finger_pose": "anim_fingers_grip_heavy",
+  "requires_hand_ik": true
+}

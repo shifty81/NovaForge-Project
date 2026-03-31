@@ -1,0 +1,26 @@
+{
+  "contracts": [
+    {
+      "id": "contract_salvage_panels_01",
+      "type": "salvage",
+      "faction_id": "free_salvage_collective",
+      "credit_reward": 1200,
+      "reputation_reward": 5,
+      "required_standing": 0,
+      "requirements": [
+        { "target_id": "panel_01", "count": 3 }
+      ]
+    },
+    {
+      "id": "contract_mine_iron_01",
+      "type": "mining",
+      "faction_id": "frontier_union",
+      "credit_reward": 950,
+      "reputation_reward": 4,
+      "required_standing": 0,
+      "requirements": [
+        { "target_id": "iron_ore", "count": 20 }
+      ]
+    }
+  ]
+}

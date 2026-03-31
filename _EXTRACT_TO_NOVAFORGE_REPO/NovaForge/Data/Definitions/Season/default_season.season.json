@@ -1,0 +1,12 @@
+{
+  "starting_season": 1,
+  "days_per_season": 180,
+  "server_authoritative_seasons": true,
+  "season_end_warning_window_days": 14,
+  "carryover_rewards_enabled": true,
+  "carryover_rewards": [
+    { "reward_id": "legacy_salvage_bonus", "category": "salvage_efficiency", "value": 5 },
+    { "reward_id": "legacy_mining_bonus", "category": "mining_efficiency", "value": 5 },
+    { "reward_id": "legacy_credit_bonus", "category": "starting_credits", "value": 1000 }
+  ]
+}

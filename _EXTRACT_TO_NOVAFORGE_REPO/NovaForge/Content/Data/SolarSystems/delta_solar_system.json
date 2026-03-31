@@ -1,0 +1,79 @@
+{
+  "id": "delta_solar_system_001",
+  "name": "Delta Solar System Auron",
+  "version": "1.0",
+  "star": {
+    "type": "A-type",
+    "radius": 1050000,
+    "luminosity": 5.2
+  },
+  "celestials": [
+    {
+      "id": "auron_planet_001",
+      "type": "Planet",
+      "name": "Auron Prime",
+      "orbit_radius": 1.5,
+      "radius": 7200,
+      "pcg_seed": 300,
+      "atmosphere": "nitrogen_oxygen"
+    },
+    {
+      "id": "auron_moon_001",
+      "type": "Moon",
+      "name": "Auron Tide",
+      "orbit_radius": 1.501,
+      "radius": 1100,
+      "parent": "auron_planet_001",
+      "pcg_seed": 301
+    },
+    {
+      "id": "auron_moon_002",
+      "type": "Moon",
+      "name": "Auron Crescent",
+      "orbit_radius": 1.503,
+      "radius": 650,
+      "parent": "auron_planet_001",
+      "pcg_seed": 302
+    },
+    {
+      "id": "auron_station_001",
+      "type": "Station",
+      "name": "Auron Orbital Forge",
+      "orbit_radius": 2.0,
+      "faction": "industrial_guild"
+    },
+    {
+      "id": "auron_asteroid_belt_001",
+      "type": "AsteroidBelt",
+      "name": "Auron Ring",
+      "orbit_radius": 3.5,
+      "ore_types": ["tritanium", "pyerite", "isogen"]
+    },
+    {
+      "id": "auron_gas_giant_001",
+      "type": "GasGiant",
+      "name": "Auron Storm",
+      "orbit_radius": 5.0,
+      "radius": 65000,
+      "pcg_seed": 303
+    },
+    {
+      "id": "auron_stargate_001",
+      "type": "Stargate",
+      "name": "Auron Gate Alpha",
+      "orbit_radius": 7.0,
+      "destination_system": "gamma_solar_system_001"
+    },
+    {
+      "id": "auron_anomaly_001",
+      "type": "Anomaly",
+      "name": "Auron Resonance Site",
+      "orbit_radius": 1.8,
+      "anomaly_class": "B"
+    }
+  ],
+  "ship_spawn_points": 2,
+  "total_celestials": 8,
+  "npc_factions": ["industrial_guild", "auron_miners_collective"],
+  "pcg_config": "solar_system_pcg_config.json"
+}

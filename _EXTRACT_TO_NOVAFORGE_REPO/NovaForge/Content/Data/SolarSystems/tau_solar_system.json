@@ -1,0 +1,20 @@
+{
+  "id": "tau_solar_system_001",
+  "name": "Tau Duskfield System",
+  "version": "1.0",
+  "star": {"type": "K1V", "radius": 620000, "luminosity": 0.75},
+  "celestials": [
+    {"id": "duskfield_planet_001", "type": "Planet", "name": "Duskfield Scorch", "orbit_radius": 0.38, "radius": 3800, "pcg_seed": 1900, "atmosphere": "thin_sulfur"},
+    {"id": "duskfield_planet_002", "type": "Planet", "name": "Duskfield Mirage", "orbit_radius": 0.85, "radius": 6200, "pcg_seed": 1901, "atmosphere": "thick_co2"},
+    {"id": "duskfield_planet_003", "type": "Planet", "name": "Duskfield Cradle", "orbit_radius": 1.3, "radius": 7100, "pcg_seed": 1902, "atmosphere": "nitrogen_oxygen", "habitable": true},
+    {"id": "duskfield_moon_001", "type": "Moon", "name": "Duskfield Shard", "orbit_radius": 1.31, "radius": 2100, "parent": "duskfield_planet_003", "pcg_seed": 1903},
+    {"id": "duskfield_planet_004", "type": "Planet", "name": "Duskfield Veil", "orbit_radius": 2.6, "radius": 4700, "pcg_seed": 1904, "atmosphere": "thin_methane"},
+    {"id": "duskfield_gas_giant_001", "type": "GasGiant", "name": "Duskfield Titan", "orbit_radius": 5.5, "radius": 72000, "pcg_seed": 1905, "atmosphere": "hydrogen_helium"},
+    {"id": "duskfield_station_001", "type": "Station", "name": "Duskfield Relay", "orbit_radius": 1.8, "faction": "duskfield_accord"},
+    {"id": "duskfield_anomaly_001", "type": "Anomaly", "name": "Duskfield Rift", "orbit_radius": 9.5, "hazard_level": "extreme"}
+  ],
+  "total_celestials": 8,
+  "npc_factions": ["duskfield_accord", "tau_wanderers", "cradle_settlers"],
+  "pcg_config": {"seed": 1900, "density": 0.62, "hazard_level": "high", "resource_richness": "rich", "encounter_rate": "medium"},
+  "hazards": ["plasma_storm", "void_rift"]
+}

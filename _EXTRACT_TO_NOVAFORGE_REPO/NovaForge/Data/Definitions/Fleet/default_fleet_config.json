@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "fleet_definitions": [
+    {
+      "fleet_id": "fleet_alpha_traders",
+      "name": "Alpha Traders",
+      "owner_type": "player",
+      "default_role": "Trader",
+      "ships": [
+        { "ship_class": "Hauler_Mk1", "role": "Trader", "condition": 1.0 },
+        { "ship_class": "Corvette_Mk1", "role": "Escort", "condition": 1.0 }
+      ],
+      "income_per_tick_base": 320.0,
+      "risk_level_base": 0.15
+    },
+    {
+      "fleet_id": "fleet_beta_miners",
+      "name": "Beta Mining Corp",
+      "owner_type": "player",
+      "default_role": "Miner",
+      "ships": [
+        { "ship_class": "MiningBarge_Mk1", "role": "Miner", "condition": 1.0 },
+        { "ship_class": "MiningBarge_Mk1", "role": "Miner", "condition": 0.9 },
+        { "ship_class": "Corvette_Mk1",    "role": "Escort", "condition": 1.0 }
+      ],
+      "income_per_tick_base": 420.0,
+      "risk_level_base": 0.1
+    },
+    {
+      "fleet_id": "fleet_gamma_combat",
+      "name": "Gamma Strike Force",
+      "owner_type": "player",
+      "default_role": "Combat",
+      "ships": [
+        { "ship_class": "Destroyer_Mk1", "role": "Combat",    "condition": 1.0 },
+        { "ship_class": "Frigate_Mk1",   "role": "Combat",    "condition": 1.0 },
+        { "ship_class": "Corvette_Mk1",  "role": "Logistics", "condition": 1.0 }
+      ],
+      "income_per_tick_base": 280.0,
+      "risk_level_base": 0.35
+    }
+  ],
+  "sector_risk_modifiers": {
+    "high_sec": 0.5,
+    "low_sec": 1.0,
+    "null_sec": 1.8,
+    "wormhole": 2.0
+  }
+}

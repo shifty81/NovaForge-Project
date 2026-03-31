@@ -1,0 +1,90 @@
+{
+  "id": "lambda_solar_system_001",
+  "name": "Lambda Solar System Veros",
+  "version": "1.0",
+  "star": {
+    "type": "A2V",
+    "radius": 1800000,
+    "luminosity": 50.0
+  },
+  "celestials": [
+    {
+      "id": "veros_planet_001",
+      "type": "Planet",
+      "name": "Veros Ashen",
+      "orbit_radius": 3.5,
+      "radius": 3800,
+      "pcg_seed": 1100,
+      "atmosphere": "none",
+      "tidally_locked": true
+    },
+    {
+      "id": "veros_planet_002",
+      "type": "Planet",
+      "name": "Veros Dune",
+      "orbit_radius": 9.0,
+      "radius": 5900,
+      "pcg_seed": 1101,
+      "atmosphere": "thin_carbon_dioxide"
+    },
+    {
+      "id": "veros_planet_003",
+      "type": "Planet",
+      "name": "Veros Verdant",
+      "orbit_radius": 16.0,
+      "radius": 7200,
+      "pcg_seed": 1102,
+      "atmosphere": "nitrogen_oxygen",
+      "habitable": true
+    },
+    {
+      "id": "veros_moon_001",
+      "type": "Moon",
+      "name": "Veros Pale Crescent",
+      "orbit_radius": 16.02,
+      "radius": 1800,
+      "parent": "veros_planet_003",
+      "pcg_seed": 1103
+    },
+    {
+      "id": "veros_gas_giant_001",
+      "type": "GasGiant",
+      "name": "Veros Tempest",
+      "orbit_radius": 30.0,
+      "radius": 72000,
+      "pcg_seed": 1104,
+      "atmosphere": "hydrogen_helium_methane"
+    },
+    {
+      "id": "veros_asteroid_belt_001",
+      "type": "AsteroidBelt",
+      "name": "Veros Fracture Ring",
+      "orbit_radius": 48.0,
+      "ore_types": ["veldspar", "scordite", "pyroxeres", "plagioclase"]
+    },
+    {
+      "id": "veros_station_001",
+      "type": "Station",
+      "name": "Veros Helix Platform",
+      "orbit_radius": 22.0,
+      "faction": "stellar_architects"
+    },
+    {
+      "id": "veros_nebula_001",
+      "type": "Nebula",
+      "name": "Veros Ion Shroud",
+      "orbit_radius": 75.0,
+      "hazard_level": "high"
+    }
+  ],
+  "total_celestials": 8,
+  "npc_factions": ["stellar_architects", "lambda_corsairs"],
+  "pcg_config": {
+    "seed": 1100,
+    "density": 0.55,
+    "hazard_level": "high",
+    "resource_richness": "moderate",
+    "encounter_rate": "medium"
+  },
+  "hazards": ["ion_storm_zone"]
+}

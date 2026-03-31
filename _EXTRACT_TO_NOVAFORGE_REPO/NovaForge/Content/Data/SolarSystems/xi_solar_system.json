@@ -1,0 +1,93 @@
+{
+  "id": "xi_solar_system_001",
+  "name": "Xi Verentis Expanse",
+  "version": "1.0",
+  "star": {
+    "type": "A2V",
+    "radius": 1700000,
+    "luminosity": 35.0,
+    "temperature": 9500
+  },
+  "total_celestials": 8,
+  "celestials": [
+    {
+      "id": "verentis_planet_001",
+      "name": "Verentis Scorch",
+      "type": "Planet",
+      "orbit_radius": 2.5,
+      "radius": 3200,
+      "atmosphere": "sulfur_dioxide",
+      "tidally_locked": true,
+      "habitable": false,
+      "pcg_seed": 1400
+    },
+    {
+      "id": "verentis_planet_002",
+      "name": "Verentis Bloom",
+      "type": "Planet",
+      "orbit_radius": 6.8,
+      "radius": 7200,
+      "atmosphere": "nitrogen_oxygen",
+      "habitable": true,
+      "pcg_seed": 1401
+    },
+    {
+      "id": "verentis_moon_001",
+      "name": "Verentis Far Tide",
+      "type": "Moon",
+      "orbit_radius": 6.82,
+      "radius": 1600,
+      "parent": "verentis_planet_002",
+      "pcg_seed": 1402
+    },
+    {
+      "id": "verentis_planet_003",
+      "name": "Verentis Haze",
+      "type": "Planet",
+      "orbit_radius": 12.0,
+      "radius": 5300,
+      "atmosphere": "thick_nitrogen",
+      "habitable": false,
+      "pcg_seed": 1403
+    },
+    {
+      "id": "verentis_gas_giant_001",
+      "name": "Verentis Colossus",
+      "type": "GasGiant",
+      "orbit_radius": 22.0,
+      "radius": 72000,
+      "atmosphere": "hydrogen_helium",
+      "pcg_seed": 1404
+    },
+    {
+      "id": "verentis_asteroid_belt_001",
+      "name": "Verentis Gravel Ring",
+      "type": "AsteroidBelt",
+      "orbit_radius": 38.0,
+      "ore_types": ["plagioclase", "pyroxeres", "veldspar", "scordite"]
+    },
+    {
+      "id": "verentis_station_001",
+      "name": "Verentis Anchorage",
+      "type": "Station",
+      "orbit_radius": 18.0,
+      "faction": "verentis_consortium"
+    },
+    {
+      "id": "verentis_anomaly_001",
+      "name": "Verentis Echo Gate",
+      "type": "Anomaly",
+      "orbit_radius": 70.0,
+      "hazard_level": "high"
+    }
+  ],
+  "npc_factions": ["verentis_consortium", "xi_scavengers"],
+  "pcg_config": {
+    "seed": 1400,
+    "density": 0.55,
+    "hazard_level": "medium",
+    "resource_richness": "rich",
+    "encounter_rate": "high"
+  },
+  "hazards": ["radiation_burst_zone", "debris_field"]
+}

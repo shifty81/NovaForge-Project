@@ -1,0 +1,10 @@
+{
+  "id": "copper_wire",
+  "name": "Copper Wire",
+  "category": "component",
+  "stack_size": 200,
+  "mass": 0.2,
+  "volume": 0.1,
+  "tags": ["crafting", "electronics"],
+  "value": 8
+}

@@ -1,0 +1,6 @@
+{
+  "nodes": [
+    { "id": "asteroid_iron", "type": "asteroid", "resource": "iron" },
+    { "id": "vein_copper", "type": "ore_vein", "resource": "copper" }
+  ]
+}

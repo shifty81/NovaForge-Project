@@ -1,0 +1,6 @@
+{
+  "id": "door_airlock_inner",
+  "name": "Airlock Inner Door",
+  "category": "door",
+  "interaction": { "interactable": true }
+}
