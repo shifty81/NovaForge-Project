@@ -1,24 +1,29 @@
 # Tasks
 
-## Immediate
-- confirm repo naming and default branch
-- create module stubs
-- add project manifest
-- add validation entry point
+## Completed
+- [x] confirm repo naming and default branch
+- [x] add project manifest (v2 with Atlas Suite bridge, capabilities, safety)
+- [x] integrate extracted game source into `NovaForge/` (C++ CMake project)
+- [x] set up `Integrations/AtlasSuite/` (Runtime bridge, Adapter, Plugins)
+- [x] set up `AtlasAI/ProjectAdapters/NovaForge/` (AI adapter)
+- [x] merge extracted phase documentation into `Docs/`
+- [x] move alignment payload to `Docs/`
+- [x] remove `_EXTRACT_TO_NOVAFORGE_REPO/` staging folder
+- [x] update governance docs for new structure
+
+## Remaining
 - add packaging entry point
 - add starter test lane
-- add migration manifests for legacy sources
-
-## Migration
-- compare Atlas Suite NovaForge against selected legacy bases
-- map keep, merge, cherry-pick, archive, and drop decisions
-- stage approved imports into `Intake/staging/`
-- normalize namespaces and paths before runtime adoption
+- verify CMake build end-to-end
+- wire up bridge roundtrip test (Suite → manifest → bridge endpoint → NovaForge)
+- validate content schemas against CONTENT_RULES.md
+- wire up CI validation pipeline
 
 ## Buildout
-- generate compile-safe code skeleton
 - implement world and voxel primitives
 - implement player and R.I.G. baseline
 - implement building and salvage baseline
 - implement season authority
 - implement client and server startup
+- implement validation suite
+- implement packaging and release pipeline

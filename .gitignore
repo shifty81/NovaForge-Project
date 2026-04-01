@@ -4,6 +4,8 @@ obj/
 Artifacts/
 out/
 dist/
+build/
+NovaForge/build/
 
 # User and IDE
 .vs/
@@ -33,3 +35,10 @@ Intake/staging/raw_sources/
 *.zip
 *.7z
 *.rar
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json

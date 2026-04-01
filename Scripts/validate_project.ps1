@@ -7,9 +7,14 @@ $required = @(
     "BUILD_RULES.md",
     "ARCHITECTURE.md",
     "Docs/Specs/HOSTED_PROJECT_CONTRACT.md",
-    "Source/NovaForge.Core",
-    "Source/NovaForge.Client",
-    "Source/NovaForge.Server",
+    "NovaForge/CMakeLists.txt",
+    "NovaForge/Client",
+    "NovaForge/Server",
+    "NovaForge/Gameplay",
+    "NovaForge/World",
+    "Integrations/AtlasSuite/Runtime",
+    "Integrations/AtlasSuite/Adapter",
+    "AtlasAI/ProjectAdapters/NovaForge",
     "Tests/NovaForge.Tests"
 )
 
