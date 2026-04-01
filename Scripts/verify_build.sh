@@ -44,11 +44,18 @@ echo "  Build: OK"
 # ── Step 3: Run tests ────────────────────────────────────────────────────────
 echo ""
 echo "Step 3: CTest..."
+TEST_RESULT=0
 if ctest --test-dir "${BUILD_DIR}" --output-on-failure; then
     echo "  Tests: OK"
 else
-    echo "  Tests: FAILED (non-fatal for build verification)"
+    echo "  Tests: FAILED"
+    TEST_RESULT=1
 fi
 
 echo ""
-echo "Build verification complete."
+if [ "${TEST_RESULT}" -ne 0 ]; then
+    echo "Build verification complete (with test failures)."
+    exit 1
+else
+    echo "Build verification complete."
+fi

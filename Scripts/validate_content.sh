@@ -71,8 +71,9 @@ except Exception:
 " 2>/dev/null; then
         ID_COUNT=$((ID_COUNT + 1))
     else
-        echo "  WARN: no 'id' field in ${REL}"
+        echo "  FAIL: no 'id' field in ${REL}"
         MISSING_ID=$((MISSING_ID + 1))
+        FAILED=1
     fi
 done
 
