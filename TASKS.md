@@ -12,12 +12,12 @@
 - [x] update governance docs for new structure
 
 ## Remaining
-- add packaging entry point
-- add starter test lane
-- verify CMake build end-to-end
-- wire up bridge roundtrip test (Suite → manifest → bridge endpoint → NovaForge)
-- validate content schemas against CONTENT_RULES.md
-- wire up CI validation pipeline
+- [x] add packaging entry point
+- [x] add starter test lane
+- [x] verify CMake build end-to-end
+- [x] wire up bridge roundtrip test (Suite → manifest → bridge endpoint → NovaForge)
+- [x] validate content schemas against CONTENT_RULES.md
+- [x] wire up CI validation pipeline
 
 ## Buildout
 - implement world and voxel primitives
